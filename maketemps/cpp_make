@@ -1,0 +1,33 @@
+CC = g++
+MKDIR_P = mkdir -p
+CFLAGS = -std=c++17 -Wall -Wpedantic
+LDFLAGS = 
+LIB = 
+DSRC = src
+SRC = $(wildcard $(DSRC)/*.cc)
+DBUILD = build
+OBJ = $(patsubst $(DSRC)/%.cc, $(DBUILD)/%.o, $(SRC))
+DBIN = bin
+TARGET = $(DBIN)/ NAME OF PROGRAM
+INCLUDE = include
+
+$(TARGET) : $(OBJ)
+	@$(MKDIR_P) $(DBIN)
+	$(CC) -o $@ $^ $(LDFLAGS) $(LIB)
+
+$(DBUILD)/%.o : $(DSRC)/%.cc
+	@$(MKDIR_P) $(DBUILD)
+	$(CC) -c -o $@ $(CFLAGS) -I$(INCLUDE) $<
+
+.PHONY: clean .depend
+
+clean :
+	$(RM) $(OBJ)
+	$(RM) $(TARGET)
+
+.depend : $(SRC)
+	@$(RM) ./.depend
+	@$(CC) -M $(CFLAGS) -I$(INCLUDE) $^ > ./.depend
+	@sed -i '/^ /! s/^/$(DBUILD)\//' ./.depend
+
+include .depend

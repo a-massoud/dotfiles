@@ -1,0 +1,12 @@
+binlist=(
+    'startx'
+    '/bin/bash --login'
+)
+
+namelist=('BSPWM' 'Shell')
+
+flaglist=(C C)
+
+countfrom=1
+
+# vim:ft=sh

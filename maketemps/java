@@ -1,0 +1,27 @@
+<project name="PROJECT NAME HERE" default="dist" basedir=".">
+    <property name="src" value="src"/>
+    <property name="build" value="build"/>
+    <property name="dist" value="bin"/>
+
+    <target name="init" description="Create required folders">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" description="Compile classes" depends="init">
+        <javac includeantruntime="false" srcdir="${src}" destdir="${build}"/>
+    </target>
+
+    <target name="dist" description="Package JAR" depends="compile">
+        <mkdir dir="${dist}"/>
+        <jar basedir="${build}" destfile="${dist}/${ant.project.name}.jar">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean" description="Clean up">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>
