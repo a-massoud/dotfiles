@@ -83,7 +83,7 @@ type = internal/xbacklight
 
 format = <label> <bar>
 label = BRIGHT
-label-foreground = ${colors.foreground-alt}
+label-foreground = ${colors.foreground}
 
 bar-width = 10
 bar-indicator = |
@@ -125,10 +125,10 @@ type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL 
-label-volume-foreground = ${colors.foreground-alt}
+label-volume-foreground = ${colors.foreground}
 
 label-muted = MUTE
-label-muted-foreground = ${colors.foreground-alt}
+label-muted-foreground = ${colors.foreground}
 
 bar-volume-width = 10
 bar-volume-foreground = ${colors.foreground}
@@ -147,12 +147,12 @@ full-at = 100
 
 format-charging = <label-charging>
 format-charging-prefix = "CHR "
-format-charging-prefix-foreground = ${colors.foreground-alt}
+format-charging-prefix-foreground = ${colors.foreground}
 
 format-discharging = <label-discharging>
 
 format-full = FULL
-format-full-foreground = ${colors.foreground-alt}
+format-full-foreground = ${colors.foreground}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
