@@ -87,7 +87,7 @@ label-foreground = ${colors.foreground-alt}
 
 bar-width = 10
 bar-indicator = |
-bar-indicator-foreground = ${colors.foreground}
+bar-indicator-foreground = ${colors.alert}
 bar-fill = |
 bar-fill-foreground = ${colors.foreground}
 bar-empty = |
@@ -134,6 +134,7 @@ bar-volume-width = 10
 bar-volume-foreground = ${colors.foreground}
 bar-volume-gradient = false
 bar-volume-indicator = |
+bar-volume-indicator-foreground = ${colors.alert}
 bar-volume-fill = |
 bar-volume-empty = |
 bar-volume-empty-foreground = ${colors.foreground-alt}

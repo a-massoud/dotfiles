@@ -11,7 +11,7 @@ super + @space
 
 # screen lock
 super + ctrl + Delete
-    physlock
+    sh ~/.lock.sh
 
 # make sxhkd reload its configuration files:
 super + Escape

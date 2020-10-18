@@ -6,7 +6,7 @@ sxhkd -c ~/.config/sxhkd/bspwm &
 pkill xsettingsd
 xsettingsd &
 
-picom -b
+picom -b --no-fading-openclose
 
 pkill dunst
 dunst &
@@ -17,7 +17,7 @@ xset s 300
 
 $HOME/.config/polybar/launch.sh
 
-hsetroot -solid black
+hsetroot -solid "#383c4a"
 
 pkill unclutter
 unclutter --timeout 4 --ignore-scrolling -b
