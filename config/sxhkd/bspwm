@@ -46,10 +46,10 @@ super + p
 #
 
 XF86MonBrightnessUp
-    xbacklight -inc 20
+    xbacklight -inc 5
 
 XF86MonBrightnessDown
-    xbacklight -dec 20
+    xbacklight -dec 5
 
 #
 # bspwm hotkeys
