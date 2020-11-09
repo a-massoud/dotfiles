@@ -9,10 +9,6 @@ super + Return
 super + @space
     rofi -modi drun -show drun -display-drun ""
 
-# screen lock
-super + ctrl + Delete
-    sh ~/.lock.sh
-
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd
