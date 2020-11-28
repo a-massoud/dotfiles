@@ -75,3 +75,8 @@ noremap <F7> :set fo-=t<CR>
 inoremap <F7> <Esc>:set fo-=t<CR>a
 noremap <F8> :set fo+=t<CR>
 inoremap <F8> <Esc>:set fo+=t<CR>a
+
+" press g_CTRL-W to get wc output for selection/whole file
+noremap g<C-W> :w !wc<CR>
+inoremap g<C-W> <Esc>:w !wc<CR>
+vnoremap g<C-W> :w !wc<CR>
