@@ -19,6 +19,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt notify
 unsetopt beep
+setopt histignorespace
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
