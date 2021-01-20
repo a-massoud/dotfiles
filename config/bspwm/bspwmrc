@@ -18,7 +18,6 @@ xset s 300
 $HOME/.config/polybar/launch.sh
 
 hsetroot -solid "#383c4a"
-hsetroot -cover ~/.config/bspwm/wallpaper.png
 
 pkill unclutter
 unclutter --timeout 4 --ignore-scrolling -b
