@@ -21,7 +21,7 @@ font-0 = Source Code Pro:size=10
 font-1 = Font Awesome 5 Free:style=Solid:size=10
 
 modules-left = bspwm xwindow
-modules-right = pulseaudio xbacklight battery date
+modules-right = pulseaudio backlight battery xkeyboard date
 
 tray-position = right
 tray-padding = 1
@@ -44,7 +44,7 @@ blacklist-0 = num lock
 blacklist-1 = caps lock
 
 format-prefix = "KEY "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 
 label-layout = %layout%
 
@@ -78,8 +78,9 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 
 format = <label> <bar>
 label = BRIGHT

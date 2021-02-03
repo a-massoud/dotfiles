@@ -7,5 +7,5 @@ if [[ -z $swapped ]]
 then
     setxkbmap -option ctrl:swapcaps
 else
-    setxkbmap -option -option compose:ralt -option inet:evdev
+    setxkbmap -option -option compose:ralt -option grp:menu_toggle
 fi
