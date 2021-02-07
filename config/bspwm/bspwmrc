@@ -22,9 +22,6 @@ hsetroot -solid "#383c4a"
 pkill unclutter
 unclutter --timeout 4 --ignore-scrolling -b
 
-pkill pia-client
-/opt/piavpn/bin/pia-client --quiet &
-
 pkill blueman-applet
 blueman-applet &
 
