@@ -1,9 +1,9 @@
 [colors]
-background = #2f343f
-background-alt = #444a58
-foreground = #ffffff
-foreground-alt = #828893
-alert = #bb2222
+background = #282a36
+background-alt = #44475a
+foreground = #f8f8f2
+foreground-alt = #6272a4
+alert = #ff5555
 
 [bar/default]
 width = 100%
