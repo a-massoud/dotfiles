@@ -31,6 +31,8 @@ nm-applet &
 pkill blueman-applet
 blueman-applet &
 
+polkit-dumb-agent &
+
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width 1
