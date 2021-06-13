@@ -4,4 +4,10 @@ project(project_name LANGUAGES C CXX)
 set(C_STANDARD 11)
 set(CXX_STANDARD 17)
 
+if(MSVC)
+  add_compile_options(/W4)
+else()
+  add_compile_options(-Wall -Wextra -pedantic)
+endif()
+
 add_executable(${PROJECT_NAME} "main.cc")
