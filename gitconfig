@@ -3,3 +3,5 @@
 [user]
 	email = purple.ultraviolet616@gmail.com
 	name = PurpleUltraViolet
+[init]
+	defaultBranch = master
