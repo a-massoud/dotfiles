@@ -5,3 +5,5 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from fractions import Fraction as F
 from decimal import Decimal as D
+
+sp.init_printing()
