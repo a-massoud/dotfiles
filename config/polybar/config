@@ -43,7 +43,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 blacklist-1 = caps lock
 
-format-prefix = "KEY "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 
 label-layout = %layout%
@@ -125,10 +125,10 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL 
+label-volume = 
 label-volume-foreground = ${colors.foreground}
 
-label-muted = MUTE
+label-muted = ""
 label-muted-foreground = ${colors.foreground}
 
 bar-volume-width = 10
@@ -147,12 +147,12 @@ adapter = AC
 full-at = 100
 
 format-charging = <label-charging>
-format-charging-prefix = "CHR "
+format-charging-prefix = " "
 format-charging-prefix-foreground = ${colors.foreground}
 
 format-discharging = <label-discharging>
 
-format-full = FULL
+format-full = 
 format-full-foreground = ${colors.foreground}
 
 ramp-capacity-0 = 
