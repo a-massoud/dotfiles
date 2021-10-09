@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/alice/.dotfiles/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+<F10>	vimrc	/^inoremap <F10> <Esc>:set nu!<CR>a$/;"	m
+<F10>	vimrc	/^noremap <F10> :set nu!<CR>$/;"	m
+<F7>	vimrc	/^inoremap <F7> <Esc>:set fo-=t<CR>a$/;"	m
+<F7>	vimrc	/^noremap <F7> :set fo-=t<CR>$/;"	m
+<F8>	vimrc	/^inoremap <F8> <Esc>:set fo+=t<CR>a$/;"	m
+<F8>	vimrc	/^noremap <F8> :set fo+=t<CR>$/;"	m
+<F9>	vimrc	/^inoremap <F9> <Esc>:nohl<CR>a$/;"	m
+<F9>	vimrc	/^noremap <F9> :nohl<CR>$/;"	m
+My dotfiles	README.md	/^# My dotfiles$/;"	c
+backend	config/picom.conf	/^backend = "glx";$/;"	k
+background	config/picom.conf	/^blur-background = true;$/;"	k
+corners	config/picom.conf	/^detect-rounded-corners = true;$/;"	k
+damage	config/picom.conf	/^use-damage = true;$/;"	k
+exclude	config/picom.conf	/^shadow-exclude = [$/;"	k
+exit-cmd	zsh-vim-mode.plugin.zsh	/^    exit-cmd () {exit;}$/;"	f
+focused	config/picom.conf	/^mark-ovredir-focused = true;$/;"	k
+focused	config/picom.conf	/^mark-wmwin-focused = true;$/;"	k
+icon	config/xsettingsd/xsettingsd.conf	/^Gtk\/DecorationLayout "icon:minimize,maximize,close"$/;"	k
+include	config/picom.conf	/^invert-color-include = [];$/;"	k
+kern	config/picom.conf	/^blur-kern = "7x7box";$/;"	k
+leader	config/picom.conf	/^detect-client-leader = true;$/;"	k
+level	config/picom.conf	/^log-level = "warn";$/;"	k
+opacity	config/picom.conf	/^detect-client-opacity = true;$/;"	k
+radius	config/picom.conf	/^shadow-radius = 3;$/;"	k
+rate	config/picom.conf	/^refresh-rate = 0;$/;"	k
+rule	config/picom.conf	/^opacity-rule = []$/;"	k
+send-terminal-sequence	zsh-vim-mode.plugin.zsh	/^    send-terminal-sequence() {$/;"	f
+set-terminal-cursor-style	zsh-vim-mode.plugin.zsh	/^    set-terminal-cursor-style() {$/;"	f
+shadow	config/picom.conf	/^shadow = true;$/;"	k
+transient	config/picom.conf	/^detect-transient = true;$/;"	k
+vi_mode_prompt_info	zsh-vim-mode.plugin.zsh	/^    function vi_mode_prompt_info() {$/;"	f
+vim-mode-accept-or-eof	zsh-vim-mode.plugin.zsh	/^                function vim-mode-accept-or-eof() {$/;"	f
+vim-mode-accum-combo	zsh-vim-mode.plugin.zsh	/^    function vim-mode-accum-combo () {$/;"	f
+vim-mode-bindkey	zsh-vim-mode.plugin.zsh	/^function vim-mode-bindkey () {$/;"	f
+vim-mode-cursor-finish-hook	zsh-vim-mode.plugin.zsh	/^    vim-mode-cursor-finish-hook() {$/;"	f
+vim-mode-cursor-init-hook	zsh-vim-mode.plugin.zsh	/^    vim-mode-cursor-init-hook() {$/;"	f
+vim-mode-define-special-key	zsh-vim-mode.plugin.zsh	/^function vim-mode-define-special-key () {$/;"	f
+vim-mode-handle-event	zsh-vim-mode.plugin.zsh	/^    vim-mode-handle-event () {$/;"	f
+vim-mode-initial-keymap	zsh-vim-mode.plugin.zsh	/^    vim-mode-initial-keymap () {$/;"	f
+vim-mode-isearch-exit	zsh-vim-mode.plugin.zsh	/^    vim-mode-isearch-exit     () { vim-mode-handle-event isearch-exit     "$KEYMAP" }$/;"	f
+vim-mode-isearch-update	zsh-vim-mode.plugin.zsh	/^    vim-mode-isearch-update   () { vim-mode-handle-event isearch-update   "$KEYMAP" }$/;"	f
+vim-mode-line-init	zsh-vim-mode.plugin.zsh	/^    vim-mode-line-init        () { vim-mode-handle-event line-init        "$KEYMAP" }$/;"	f
+vim-mode-line-pre-redraw	zsh-vim-mode.plugin.zsh	/^    vim-mode-line-pre-redraw  () { vim-mode-handle-event line-pre-redraw  "$KEYMAP" }$/;"	f
+vim-mode-maybe-bind	zsh-vim-mode.plugin.zsh	/^    vim-mode-maybe-bind() {$/;"	f
+vim-mode-precmd	zsh-vim-mode.plugin.zsh	/^    vim-mode-precmd           () { vim-mode-handle-event precmd           "$KEYMAP" }$/;"	f
+vim-mode-set-cursor-style	zsh-vim-mode.plugin.zsh	/^    vim-mode-set-cursor-style() {$/;"	f
+vim-mode-set-up-indicators	zsh-vim-mode.plugin.zsh	/^    vim-mode-set-up-indicators () {$/;"	f
+vim-mode-update-prompt	zsh-vim-mode.plugin.zsh	/^    vim-mode-update-prompt () {$/;"	f
+vim_mode_keymap_funcs=	zsh-vim-mode.plugin.zsh	/^    typeset -g -a vim_mode_keymap_funcs=()$/;"	f
+vim_mode_set_keymap	zsh-vim-mode.plugin.zsh	/^    vim_mode_set_keymap () {$/;"	f
+vsync	config/picom.conf	/^vsync = true;$/;"	k
+wintypes	config/picom.conf	/^wintypes:$/;"	k
+x	config/picom.conf	/^shadow-offset-x = 0;$/;"	k
+y	config/picom.conf	/^shadow-offset-y = 0;$/;"	k
