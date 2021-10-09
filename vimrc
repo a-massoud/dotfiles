@@ -48,6 +48,7 @@ set showmatch
 set matchtime=0
 set showmode
 set wildmenu
+set number
 
 " qol
 set nojs
@@ -76,7 +77,6 @@ inoremap <F7> <Esc>:set fo-=t<CR>a
 noremap <F8> :set fo+=t<CR>
 inoremap <F8> <Esc>:set fo+=t<CR>a
 
-" press g_CTRL-W to get wc output for selection/whole file
-noremap g<C-W> :w !wc<CR>
-inoremap g<C-W> <Esc>:w !wc<CR>
-vnoremap g<C-W> :w !wc<CR>
+" press F10 to turn off and on line numbers
+noremap <F10> :set nu!<CR>
+inoremap <F10> <Esc>:set nu!<CR>a
