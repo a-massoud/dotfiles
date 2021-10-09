@@ -33,7 +33,7 @@ blueman-applet &
 
 polkit-dumb-agent &
 
-bspc monitor -d I II III IV
+bspc monitor -d I II III IV V
 
 bspc config border_width 1
 
