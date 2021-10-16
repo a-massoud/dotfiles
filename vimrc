@@ -10,7 +10,13 @@ Plug 'tpope/vim-fugitive'
 " tags integration
 Plug 'ludovicchabant/vim-gutentags'
 
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " editing options
 set ts=4
