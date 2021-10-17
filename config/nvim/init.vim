@@ -17,8 +17,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" bufferline
-Plug 'https://github.com/bling/vim-bufferline'
+" bufexplorer
+Plug 'jlanzarotta/bufexplorer'
 
 " nerdtree
 Plug 'preservim/nerdtree' |
@@ -103,11 +103,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-d>"
-
-" <leader> n for next buffer, <leader> p for previous
-noremap <leader>n :bn<CR>
-noremap <leader>p :bp<CR>
-noremap <leader>d :bd<CR>
 
 " press F9 to toggle search highlighting
 noremap <F9> :nohl<CR>
