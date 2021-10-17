@@ -96,7 +96,6 @@ endif
 " nerdtree
 nnoremap <leader>t :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
