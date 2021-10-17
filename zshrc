@@ -23,40 +23,40 @@ setopt histignorespace
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-if (( $+commands[acpi] )); then
-    function __prompt_command() {
-        local LAST_EXIT_CODE="$?"
-
-        local exit_code_str=""
-        if [[ $LAST_EXIT_CODE -ne 0 ]]
-        then
-            exit_code_str="-$LAST_EXIT_CODE- "
-        fi
-
-        local bat_str=""
-        local BAT_PCT=$(acpi | grep -P -o "[0-9]*(?=%)")
-        if [[ $BAT_PCT -le 10 ]] && acpi | grep 'Discharging' > /dev/null 2>&1
-        then
-            bat_str="$BAT_PCT%% "
-        fi
-
-        PS1="$exit_code_str$bat_str%1~%# "
-    }
-else
-    function __prompt_command() {
-        local LAST_EXIT_CODE="$?"
-
-        local exit_code_str=""
-        if [[ $LAST_EXIT_CODE -ne 0 ]]
-        then
-            exit_code_str="-$LAST_EXIT_CODE- "
-        fi
-
-        PS1="$exit_code_str%1~%# "
-    }
-fi
-
-precmd() { __prompt_command; }
+#if (( $+commands[acpi] )); then
+#    function __prompt_command() {
+#        local LAST_EXIT_CODE="$?"
+#
+#        local exit_code_str=""
+#        if [[ $LAST_EXIT_CODE -ne 0 ]]
+#        then
+#            exit_code_str="-$LAST_EXIT_CODE- "
+#        fi
+#
+#        local bat_str=""
+#        local BAT_PCT=$(acpi | grep -P -o "[0-9]*(?=%)")
+#        if [[ $BAT_PCT -le 10 ]] && acpi | grep 'Discharging' > /dev/null 2>&1
+#        then
+#            bat_str="$BAT_PCT%% "
+#        fi
+#
+#        PS1="$exit_code_str$bat_str%1~%# "
+#    }
+#else
+#    function __prompt_command() {
+#        local LAST_EXIT_CODE="$?"
+#
+#        local exit_code_str=""
+#        if [[ $LAST_EXIT_CODE -ne 0 ]]
+#        then
+#            exit_code_str="-$LAST_EXIT_CODE- "
+#        fi
+#
+#        PS1="$exit_code_str%1~%# "
+#    }
+#fi
+#
+#precmd() { __prompt_command; }
 
 if [[ $PATH != *"$HOME/.local/bin"* ]]
 then
@@ -72,3 +72,7 @@ alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
     0.3 10'
 alias ls='ls -F'
 alias calc='ipython -i ~/.mathenv'
+
+# powerline
+powerline-daemon -q
+. /usr/share/powerline/bindings/zsh/powerline.zsh
