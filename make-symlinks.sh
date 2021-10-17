@@ -10,9 +10,9 @@
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files=(zshrc config/xsettingsd config/bspwm config/polybar xinitrc
-    config/alacritty vimrc zsh-vim-mode.plugin.zsh maketemps lock.sh ctrlcaps.sh
+    config/alacritty zsh-vim-mode.plugin.zsh maketemps lock.sh ctrlcaps.sh
     gitconfig pam_environment config/cdm config/dunst config/sxhkd config/rofi
-    config/picom.conf mathenv tmux.conf bg.jpg)
+    config/picom.conf mathenv tmux.conf bg.jpg config/nvim)
 
 ##########
 
