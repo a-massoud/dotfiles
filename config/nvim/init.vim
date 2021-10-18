@@ -206,7 +206,7 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
+augroup CocConfig
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
@@ -282,3 +282,18 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+let g:coc_filetypes_disable = ['text', 'markdown']
+
+function! s:disable_coc_for_type()
+    if index(g:coc_filetypes_disable, &filetype) != -1
+        :silent! CocDisable
+    else
+        :silent! CocEnable
+    endif
+endfunction
+
+augroup CocAuto
+    autocmd!
+    autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
+augroup end
