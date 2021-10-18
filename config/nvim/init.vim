@@ -283,7 +283,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-let g:coc_filetypes_disable = ['text', 'markdown']
+let g:coc_filetypes_disable = ['text', 'markdown', '']
 
 function! s:disable_coc_for_type()
     if index(g:coc_filetypes_disable, &filetype) != -1
