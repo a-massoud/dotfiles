@@ -73,7 +73,8 @@ set number
 
 let g:bufferline_echo=0
 " airline
-let g:airline_theme='simple'
+set noshowmode
+let g:airline_theme='dark_minimal'
 let g:airline_powerline_fonts=1
 
 " qol
