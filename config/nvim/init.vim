@@ -17,12 +17,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" bufexplorer
-Plug 'jlanzarotta/bufexplorer'
-
-" nerdtree
-Plug 'preservim/nerdtree' |
-    \ Plug 'Xuyuanp/nerdtree-git-plugin'
+" fzf
+Plug 'junegunn/fzf'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -77,6 +73,11 @@ set noshowmode
 let g:airline_theme='dark_minimal'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers=0
+let g:airline#extensions#tabline#show_splits=0
+let g:airline#extensions#tabline#show_tab_nr=0
+let g:airline#extensions#tabline#show_tab_type=0
+let g:airline#extensions#tabline#buffer_min_count=2
 
 " qol
 set nojs
@@ -95,11 +96,8 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
-" nerdtree
-nnoremap <leader>t :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" fzf
+noremap <leader>t :FZF<CR>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<c-space>"
