@@ -76,6 +76,7 @@ let g:bufferline_echo=0
 set noshowmode
 let g:airline_theme='dark_minimal'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
 
 " qol
 set nojs
