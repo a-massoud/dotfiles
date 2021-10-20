@@ -17,8 +17,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" NERDTree
+Plug 'preservim/nerdtree'
+
 " fzf
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -96,8 +100,13 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
+" NERDTree
+map <F5> :NERDTreeToggle<CR>
+
 " fzf
-noremap <leader>t :FZF<CR>
+noremap <leader>t :Files<CR>
+noremap <leader>b :Buffers<CR>
+let g:fzf_preview_window=['right:50%', 'ctrl-/']
 
 " snippets
 let g:UltiSnipsExpandTrigger="<c-space>"
