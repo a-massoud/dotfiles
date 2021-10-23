@@ -10,9 +10,9 @@
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files=(zshrc config/xsettingsd config/bspwm config/polybar xinitrc
-    config/alacritty zsh-vim-mode.plugin.zsh maketemps lock.sh ctrlcaps.sh
-    gitconfig pam_environment config/cdm config/dunst config/sxhkd config/rofi
-    config/picom.conf mathenv tmux.conf bg.jpg config/nvim config/powerline)
+       config/alacritty zsh-vim-mode.plugin.zsh maketemps lock.sh ctrlcaps.sh
+       gitconfig pam_environment config/dunst config/sxhkd config/rofi
+       config/picom.conf mathenv tmux.conf bg.jpg config/nvim config/powerline)
 
 ##########
 
@@ -28,7 +28,7 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create
-# symlinks 
+# symlinks
 for file in ${files[@]}; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir/$file
