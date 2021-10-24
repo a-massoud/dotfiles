@@ -28,6 +28,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'dracula/vim'
+
 call plug#end()
 
 " editorconfig
@@ -74,7 +76,7 @@ set number
 let g:bufferline_echo=0
 " airline
 set noshowmode
-let g:airline_theme='dark_minimal'
+let g:airline_theme='dracula'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
@@ -89,10 +91,11 @@ set nojs
 " syntax highlighting
 syntax on
 try
-    colorscheme default
+    colorscheme dracula
 catch
 endtry
 set bg=dark
+highlight Normal ctermbg=none
 
 " autocmds
 if has("autocmd")
