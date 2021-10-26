@@ -17,7 +17,7 @@ xset s 300
 
 $HOME/.config/polybar/launch.sh
 
-hsetroot -cover ~/.bg.jpg
+hsetroot -cover ~/.bg.png
 
 pkill unclutter
 unclutter --timeout 4 --ignore-scrolling -b
