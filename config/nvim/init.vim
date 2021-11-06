@@ -28,6 +28,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" more highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'dracula/vim'
 
 call plug#end()
@@ -96,6 +99,17 @@ catch
 endtry
 set bg=dark
 highlight Normal ctermbg=none
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  ignore_install = {},
+  highlight = {
+    enable = true,
+    disable = {},
+    additional_vim_regex_highlighting = true,
+  }
+}
+EOF
 
 " autocmds
 if has("autocmd")
