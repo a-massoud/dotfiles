@@ -34,9 +34,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " dracula theme
 Plug 'dracula/vim'
 
-" easy restore view
-Plug 'vim-scripts/restore_view.vim'
-
 call plug#end()
 
 " editorconfig
@@ -114,9 +111,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
-set fdm=expr
-set fde=nvim_treesitter#foldexpr()
-set viewoptions=folds,cursor
 
 " autocmds
 if has("autocmd")
