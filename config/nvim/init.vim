@@ -4,9 +4,6 @@ call plug#begin('~/.vim/plugged')
 " git integration
 Plug 'tpope/vim-fugitive'
 
-" tags integration
-Plug 'ludovicchabant/vim-gutentags'
-
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
