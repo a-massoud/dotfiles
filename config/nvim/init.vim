@@ -1,4 +1,3 @@
-" plugins
 call plug#begin('~/.vim/plugged')
 
 " git integration
@@ -9,10 +8,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 " completions
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -28,16 +23,25 @@ Plug 'junegunn/fzf.vim'
 " more highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" tabular
+Plug 'godlygeek/tabular'
+
+Plug 'plasticboy/vim-markdown'
+
+" snippets
+" use coc-snippets
+Plug 'honza/vim-snippets'
+
 " dracula theme
 Plug 'dracula/vim'
 
 call plug#end()
 
-" coc.nvim config
-let g:coc_config_home = '~/.local/share/nvim'
-
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" latex
+let g:tex_flavor = "latex"
 
 " editing options
 set ts=4
@@ -76,6 +80,7 @@ set matchtime=0
 set showmode
 set wildmenu
 set number
+set relativenumber
 
 let g:bufferline_echo=0
 " airline
@@ -111,6 +116,9 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+set fdm=expr
+set fde=nvim_treesitter#foldexpr()
+au BufRead * normal zR
 
 " autocmds
 if has("autocmd")
@@ -126,11 +134,6 @@ noremap <leader>t :Files<CR>
 noremap <leader>b :Buffers<CR>
 let g:fzf_preview_window=['right:50%', 'ctrl-/']
 
-" snippets
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-d>"
-
 " press F9 to toggle search highlighting
 noremap <F9> :nohl<CR>
 inoremap <F9> <Esc>:nohl<CR>a
@@ -141,11 +144,29 @@ inoremap <F7> <Esc>:set fo-=t<CR>a
 noremap <F8> :set fo+=t<CR>
 inoremap <F8> <Esc>:set fo+=t<CR>a
 
-" press F10 to turn off and on line numbers
-noremap <F10> :set nu!<CR>
-inoremap <F10> <Esc>:set nu!<CR>a
-
 " coc.nvim stuff
+
+" config file
+let g:coc_config_home = '~/.local/share/nvim'
+
+" snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -309,18 +330,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-let g:coc_filetypes_disable = ['text', 'markdown', '']
-
-function! s:disable_coc_for_type()
-    if index(g:coc_filetypes_disable, &filetype) != -1
-        :silent! CocDisable
-    else
-        :silent! CocEnable
-    endif
-endfunction
-
-augroup CocAuto
-    autocmd!
-    autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
-augroup end
