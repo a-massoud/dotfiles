@@ -21,10 +21,6 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 " more highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -32,6 +28,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dracula/vim'
 
 call plug#end()
+
+" coc.nvim config
+let g:coc_config_home = '~/.local/share/nvim'
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
