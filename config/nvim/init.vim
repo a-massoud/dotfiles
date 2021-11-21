@@ -10,6 +10,10 @@ Plug 'editorconfig/editorconfig-vim'
 " completions
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
