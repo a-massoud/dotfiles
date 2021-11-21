@@ -35,18 +35,31 @@ then
     PATH=$PATH:$HOME/.local/bin
 fi
 
-# zsh-vim-mode
-source "$HOME/.zsh-vim-mode.plugin.zsh"
-RPS1=""
-
 alias dog='pygmentize -g -O style=colorful'
 alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
     0.3 10'
 alias ls='ls -F'
 alias calc='ipython -i ~/.mathenv'
 
-# p10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zplug/init.zsh
+
+zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
+
+zplug 'romkatv/powerlevel10k', as:theme, depth:1
+
+zplug 'zsh-users/zsh-syntax-highlighting', depth:1
+
+zplug 'softmoth/zsh-vim-mode', depth:1
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
