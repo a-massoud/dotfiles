@@ -116,9 +116,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
-set fdm=expr
-set fde=nvim_treesitter#foldexpr()
-au BufRead * normal zR
 
 " autocmds
 if has("autocmd")
