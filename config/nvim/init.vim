@@ -141,6 +141,10 @@ inoremap <F7> <Esc>:set fo-=t<CR>a
 noremap <F8> :set fo+=t<CR>
 inoremap <F8> <Esc>:set fo+=t<CR>a
 
+" Press F6 to toggle line numbers
+noremap <F6> :set number! relativenumber!<CR>
+inoremap <F6> <Esc>:set number! relativenumber!<CR>
+
 " coc.nvim stuff
 
 " config file
