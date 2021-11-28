@@ -28,6 +28,9 @@ Plug 'godlygeek/tabular'
 
 Plug 'plasticboy/vim-markdown'
 
+" Latex
+Plug 'lervag/vimtex'
+
 " snippets
 " use coc-snippets
 Plug 'honza/vim-snippets'
@@ -37,11 +40,39 @@ Plug 'dracula/vim'
 
 call plug#end()
 
+" markdown
+let g:vim_markdown_folding_disabled = 1
+
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " latex
 let g:tex_flavor = "latex"
+let g:vimtex_compiler_method = "latexmk"
+let g:vimtex_compiler_latexmk = {
+            \ 'build_dir': 'out',
+            \ 'callback': 1,
+            \ 'continuous': 1,
+            \ 'executable': 'latexmk',
+            \ 'hooks': [],
+            \ 'options': [
+                \ '-verbose',
+                \ '-file-line-error',
+                \ '-synctex=1',
+                \ '-interaction=nostopmode',
+            \ ],
+            \}
+let g:vimtex_compiler_latexmk_engines = {
+            \ '_': '-xelatex',
+            \ 'pdflatex': '-pdf',
+            \ 'dvipdfex': '-pdfdvi',
+            \ 'lualatex': '-lualatex',
+            \ 'xelatex': '-xelatex',
+            \ 'context (pdftex)': '-pdf -pdflatex=texexec',
+            \ 'context (luatex)': '-pdf -pdflatex=context',
+            \ 'context (xetex)': '-pdf -pdflatex=''texexec --xtx''',
+            \}
+let g:vimtex_view_method = "general"
 
 " editing options
 set ts=4
@@ -50,7 +81,7 @@ set et
 set si
 set sta
 set ai
-set formatoptions=tcroqn2j
+set formatoptions=croqnj
 set nojoinspaces
 set tw=80
 set title
@@ -88,11 +119,16 @@ set noshowmode
 let g:airline_theme='dracula'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_close_button=0
+let g:airline#extensions#tabline#tabs_label=''
+let g:airline#extensions#tabline#buffers_label=''
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#show_tab_count=0
 let g:airline#extensions#tabline#show_buffers=0
 let g:airline#extensions#tabline#show_splits=0
 let g:airline#extensions#tabline#show_tab_nr=0
 let g:airline#extensions#tabline#show_tab_type=0
-let g:airline#extensions#tabline#buffer_min_count=2
+let g:airline#extensions#tabline#tab_min_count=2
 
 " qol
 set nojs
