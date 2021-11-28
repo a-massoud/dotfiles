@@ -254,7 +254,18 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+function! s:should_complete() abort
+    if !exists('*complete_info')
+        throw 'should_complete requires complete_info function to work'
+    endif
+    let selected = complete_info()['selected']
+    if selected == -1
+        return 0
+    endif
+    return 1
+endfunction
+
+inoremap <silent><expr> <cr> <SID>should_complete() ? "\<C-y>"
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
