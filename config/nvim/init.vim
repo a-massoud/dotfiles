@@ -73,6 +73,8 @@ let g:vimtex_compiler_latexmk_engines = {
             \ 'context (xetex)': '-pdf -pdflatex=''texexec --xtx''',
             \}
 let g:vimtex_view_method = "general"
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_autoclose_after_keystrokes = 1
 
 " editing options
 set ts=4
