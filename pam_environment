@@ -3,5 +3,5 @@ LESS                    DEFAULT="F i M R W x4 x z-4 q"
 EDITOR                  DEFAULT=/usr/bin/nvim
 VISUAL                  DEFAULT=/usr/bin/nvim
 BROWSER                 DEFAULT=/usr/bin/firefox
-TERMINAL                DEFAULT=/usr/bin/alacritty
+TERMINAL                DEFAULT=/usr/bin/kitty
 QT_STYLE_OVERRIDE       DEFAULT=kvantum
