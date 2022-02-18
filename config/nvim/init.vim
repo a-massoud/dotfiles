@@ -89,6 +89,7 @@ set tw=80
 set title
 set titlelen=0
 set nofixeol
+set delcombine
 
 " search
 set hls
