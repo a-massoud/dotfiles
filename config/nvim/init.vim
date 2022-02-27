@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 " git integration
 Plug 'tpope/vim-fugitive'
 
+" surround.vim
+Plug 'tpope/vim-surround'
+
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -15,6 +18,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 " NERDTree
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 
 " fzf
 Plug 'junegunn/fzf'
@@ -164,6 +169,13 @@ endif
 
 " NERDTree
 map <F5> :NERDTreeToggle<CR>
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+let NERDTreeAutoDeleteBuffer=1
+let NERDTreeMinimalUI=1
+let NERDTreeMinimalMenu=1
 
 " fzf
 noremap <leader>t :Files<CR>
