@@ -71,7 +71,7 @@ let g:vimtex_compiler_latexmk = {
             \ ],
             \}
 let g:vimtex_compiler_latexmk_engines = {
-            \ '_': '-xelatex',
+            \ '_': '-lualatex',
             \ 'pdflatex': '-pdf',
             \ 'dvipdfex': '-pdfdvi',
             \ 'lualatex': '-lualatex',
