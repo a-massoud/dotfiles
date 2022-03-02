@@ -43,6 +43,9 @@ Plug 'honza/vim-snippets'
 " dracula theme
 Plug 'dracula/vim'
 
+" nord theme
+Plug 'arcticicestudio/nord-vim'
+
 call plug#end()
 
 " markdown
@@ -124,7 +127,7 @@ set relativenumber
 let g:bufferline_echo=0
 " airline
 set noshowmode
-let g:airline_theme='dracula'
+let g:airline_theme='nord'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_close_button=0
@@ -142,9 +145,14 @@ let g:airline#extensions#tabline#tab_min_count=2
 set nojs
 
 " syntax highlighting
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+set cursorline
 syntax on
 try
-    colorscheme dracula
+    colorscheme nord
 catch
 endtry
 set bg=dark
