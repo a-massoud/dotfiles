@@ -40,6 +40,9 @@ Plug 'lervag/vimtex'
 " use coc-snippets
 Plug 'honza/vim-snippets'
 
+" debugging
+Plug 'puremourning/vimspector'
+
 " dracula theme
 Plug 'dracula/vim'
 
@@ -175,8 +178,23 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
+augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * :set nonumber norelativenumber
+augroup END
+
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+nmap <Leader>db <Plug>VimspectorBreakpoints
+nmap <Leader><Esc> :call vimspector#Reset()<CR>
+
 " NERDTree
-map <F5> :NERDTreeToggle<CR>
+map <F1> :NERDTreeToggle<CR>
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
@@ -190,19 +208,19 @@ noremap <leader>t :Files<CR>
 noremap <leader>b :Buffers<CR>
 let g:fzf_preview_window=['right:50%', 'ctrl-/']
 
-" press F9 to toggle search highlighting
-noremap <F9> :nohl<CR>
-inoremap <F9> <Esc>:nohl<CR>a
+" press F2 to toggle search highlighting
+noremap <F2> :nohl<CR>
+inoremap <F2> <Esc>:nohl<CR>a
 
-" press F7 & F8 to turn off and on normal text wrapping
-noremap <F7> :set fo-=t<CR>
-inoremap <F7> <Esc>:set fo-=t<CR>a
-noremap <F8> :set fo+=t<CR>
-inoremap <F8> <Esc>:set fo+=t<CR>a
+" press F3 & F4 to turn off and on normal text wrapping
+noremap <F3> :set fo-=t<CR>
+inoremap <F3> <Esc>:set fo-=t<CR>a
+noremap <F4> :set fo+=t<CR>
+inoremap <F4> <Esc>:set fo+=t<CR>a
 
-" Press F6 to toggle line numbers
-noremap <F6> :set number! relativenumber!<CR>
-inoremap <F6> <Esc>:set number! relativenumber!<CR>
+" Press F7 to toggle line numbers
+noremap <F7> :set number! relativenumber!<CR>
+inoremap <F7> <Esc>:set number! relativenumber!<CR>
 
 " coc.nvim stuff
 
