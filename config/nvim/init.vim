@@ -43,13 +43,16 @@ Plug 'honza/vim-snippets'
 " debugging
 Plug 'puremourning/vimspector'
 
-" dracula theme
-Plug 'dracula/vim'
+" safe local vimrc
+Plug 'embear/vim-localvimrc'
 
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
+
+" disable localvimrc sandbox - it asks anyway
+let g:localvimrc_sandbox = 0
 
 " markdown
 let g:vim_markdown_folding_disabled = 1
@@ -159,7 +162,6 @@ try
 catch
 endtry
 set bg=dark
-highlight Normal ctermbg=none
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
