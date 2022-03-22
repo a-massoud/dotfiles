@@ -197,10 +197,6 @@ nmap <Leader><Esc> :call vimspector#Reset()<CR>
 
 " NERDTree
 map <F1> :NERDTreeToggle<CR>
-" Start NERDTree. If a file is specified, move the cursor to its window.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeMinimalMenu=1
