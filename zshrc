@@ -38,7 +38,7 @@ fi
 alias dog='pygmentize -g -O style=colorful'
 alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
     0.3 10'
-alias ls='ls -F'
+alias ls='ls --color=auto -F'
 alias calc='ipython -i ~/.mathenv'
 
 source ~/.zplug/init.zsh
