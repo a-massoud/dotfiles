@@ -194,6 +194,7 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
 nmap <Leader>db <Plug>VimspectorBreakpoints
 nmap <Leader><Esc> :call vimspector#Reset()<CR>
+let g:vimspector_base_dir=$HOME . "/.vim/plugged/vimspector"
 
 " NERDTree
 map <F1> :NERDTreeToggle<CR>
