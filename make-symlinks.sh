@@ -9,8 +9,8 @@
 
 dir=~/.dotfiles        # dotfiles directory
 olddir=~/.dotfiles_old # old dotfiles backup directory
-files=(zshrc config/kitty maketemps lock.sh ctrlcaps.sh gitconfig zprofile
-       profile mathenv tmux.conf config/nvim p10k.zsh dir_colors)
+files=(zshrc config/kitty maketemps lock.sh gitconfig zprofile profile mathenv
+       tmux.conf config/nvim p10k.zsh dir_colors)
 
 ##########
 
