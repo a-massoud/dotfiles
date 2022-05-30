@@ -7,12 +7,10 @@
 
 ########## Variables
 
-dir=~/.dotfiles                    # dotfiles directory
-olddir=~/.dotfiles_old             # old dotfiles backup directory
-files=(zshrc config/xsettingsd config/bspwm config/polybar xinitrc
-       config/kitty zsh-vim-mode.plugin.zsh maketemps lock.sh ctrlcaps.sh
-       gitconfig pam_environment config/dunst config/sxhkd config/rofi
-       config/picom.conf mathenv tmux.conf config/nvim p10k.zsh dir_colors)
+dir=~/.dotfiles        # dotfiles directory
+olddir=~/.dotfiles_old # old dotfiles backup directory
+files=(zshrc config/kitty maketemps lock.sh ctrlcaps.sh gitconfig zprofile
+       profile mathenv tmux.conf config/nvim p10k.zsh dir_colors)
 
 ##########
 
