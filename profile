@@ -1,6 +1,6 @@
-export PAGER                   DEFAULT=/bin/less
-export LESS                    DEFAULT="F i M R W x4 x z-4 q"
-export EDITOR                  DEFAULT=/usr/bin/nvim
-export VISUAL                  DEFAULT=/usr/bin/nvim
-export BROWSER                 DEFAULT=/usr/bin/firefox
-export TERMINAL                DEFAULT=/usr/bin/kitty
+export PAGER=/bin/less
+export LESS="F i M R W x4 x z-4 q"
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+export BROWSER=/usr/bin/firefox
+export TERMINAL=/usr/bin/kitty
