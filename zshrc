@@ -45,7 +45,9 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
 
-zplug 'romkatv/powerlevel10k', as:theme, depth:1
+if [[ -n "$DISPLAY" ]]; then
+    zplug 'romkatv/powerlevel10k', as:theme, depth:1
+fi
 
 zplug 'zsh-users/zsh-syntax-highlighting', depth:1
 

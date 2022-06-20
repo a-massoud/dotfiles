@@ -7,8 +7,10 @@ Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 
 " airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+if (!empty($DISPLAY))
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+endif
 
 " fzf
 Plug 'junegunn/fzf'
@@ -65,20 +67,24 @@ set relativenumber
 
 let g:bufferline_echo=0
 " airline
-set noshowmode
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#show_close_button=0
-let g:airline#extensions#tabline#tabs_label=''
-let g:airline#extensions#tabline#buffers_label=''
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#show_tab_count=0
-let g:airline#extensions#tabline#show_buffers=0
-let g:airline#extensions#tabline#show_splits=0
-let g:airline#extensions#tabline#show_tab_nr=0
-let g:airline#extensions#tabline#show_tab_type=0
-let g:airline#extensions#tabline#tab_min_count=2
+if (!empty($DISPLAY))
+    set noshowmode
+    let g:airline_theme='onedark'
+    let g:airline_powerline_fonts=1
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline#extensions#tabline#show_close_button=0
+    let g:airline#extensions#tabline#tabs_label=''
+    let g:airline#extensions#tabline#buffers_label=''
+    let g:airline#extensions#tabline#fnamemod=':t'
+    let g:airline#extensions#tabline#show_tab_count=0
+    let g:airline#extensions#tabline#show_buffers=0
+    let g:airline#extensions#tabline#show_splits=0
+    let g:airline#extensions#tabline#show_tab_nr=0
+    let g:airline#extensions#tabline#show_tab_type=0
+    let g:airline#extensions#tabline#tab_min_count=2
+else
+    set showmode
+endif
 
 " qol
 set nojs
