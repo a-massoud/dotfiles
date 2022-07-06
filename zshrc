@@ -45,7 +45,7 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
 
-if [[ -n "$DISPLAY" ]]; then
+if [ "$(tty | sed 's-/dev/\(...\).*$-\1-p')" != 'tty' ]; then
     zplug 'romkatv/powerlevel10k', as:theme, depth:1
 fi
 
