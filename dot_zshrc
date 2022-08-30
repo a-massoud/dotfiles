@@ -1,0 +1,81 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' menu select=0
+zstyle ':completion:*' original false
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-compctl true
+zstyle :compinstall filename "$HOME/.zshrc"
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt notify
+unsetopt beep
+setopt histignorespace
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+if [[ $PATH != *"$HOME/.local/bin"* ]]
+then
+    PATH=$PATH:$HOME/.local/bin
+fi
+
+alias dog='pygmentize -g -O style=colorful'
+alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
+    0.3 10'
+alias ls='ls --color=auto -F'
+alias calc='ipython -i ~/.mathenv'
+
+source ~/.zplug/init.zsh
+
+zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
+
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+    zplug 'romkatv/powerlevel10k', as:theme, depth:1
+    ZLE_RPROMPT_INDENT=0
+fi
+
+zplug 'zsh-users/zsh-syntax-highlighting', depth:1
+
+zplug 'softmoth/zsh-vim-mode', depth:1
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+
+setopt monitor
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# run
+# curl -s "https://get.sdkman.io" | bash
+# to install sdkman
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+true
