@@ -21,6 +21,7 @@ endif
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim', {'branch': '0.1.x'}
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " one dark theme
 Plug 'joshdick/onedark.vim'
@@ -157,10 +158,21 @@ augroup neovim_terminal
 augroup END
 
 " telescope
+lua<<EOF
+require("telescope").setup {
+    extensions = {
+        file_browser = {
+            hijack_netrw = true
+        }
+    }
+}
+require("telescope").load_extension "file_browser"
+EOF
 nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fn <cmd>Telescope file_browser<cr>
 
 " press F2 to toggle search highlighting
 noremap <F2> :nohl<CR>
