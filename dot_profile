@@ -4,6 +4,3 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export BROWSER=/usr/bin/firefox
 export TERMINAL=/usr/bin/kitty
-export GTK_THEME=Arc-Dark
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_STYLE_OVERRIDE=kvantum
