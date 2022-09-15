@@ -144,6 +144,10 @@ endif
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
 if (has("termguicolors"))
     set termguicolors
+    if (!has("gui"))
+        "Fix background -- only using nvim in terminal
+        highlight Normal guibg=ctermbg
+    endif
 endif
 
 " autocmds
