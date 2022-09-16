@@ -23,8 +23,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim', {'branch': '0.1.x'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
-" one dark theme
-Plug 'joshdick/onedark.vim'
+" gruvbox color scheme
+Plug 'gruvbox-community/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 
 " texlive
 Plug 'lervag/vimtex'
@@ -106,7 +107,7 @@ let g:bufferline_echo=0
 " airline
 if (!empty($DISPLAY))
     set noshowmode
-    let g:airline_theme='onedark'
+    let g:airline_theme='gruvbox'
     let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#show_close_button=0
@@ -127,11 +128,10 @@ endif
 set nojs
 
 " syntax highlighting
-let g:onedark_terminal_italic = 1
 set cursorline
 syntax on
 try
-    colorscheme onedark
+    colorscheme gruvbox
 catch
 endtry
 set bg=dark
@@ -144,10 +144,6 @@ endif
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
 if (has("termguicolors"))
     set termguicolors
-    if (!has("gui"))
-        "Fix background -- only using nvim in terminal
-        highlight Normal guibg=ctermbg
-    endif
 endif
 
 " autocmds
