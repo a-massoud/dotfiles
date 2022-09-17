@@ -1,6 +1,15 @@
 {
     "ltex.language": "en-US",
-    "ltex.dictionary": {"en-US": ["Massoud"], "es": ["Massoud"]},
+    "ltex.dictionary": {
+        "en-US": [
+            "Massoud"
+        ],
+        "es": [
+            "Massoud"
+        ]
+    },
     "clangd.compilationDatabasePath": "build",
-    "clangd.arguments": ["-header-insertion=never"]
+    "clangd.arguments": [
+        "-header-insertion=never"
+    ]
 }
