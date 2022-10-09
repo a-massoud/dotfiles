@@ -43,6 +43,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+" commentary use single-line comments for c/c++
+autocmd FileType c,cpp setlocal commentstring=//%s
+
 " tree-sitter
 lua<<EOF
 require'nvim-treesitter.configs'.setup {
