@@ -69,6 +69,13 @@ setopt monitor
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# go
+
+if [[ $PATH != *"$(go env GOPATH)"* ]]
+then
+    PATH=$PATH:$(go env GOPATH)/bin
+fi
+
 # run
 # curl -s "https://get.sdkman.io" | bash
 # to install sdkman
