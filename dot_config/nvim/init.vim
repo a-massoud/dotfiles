@@ -25,18 +25,12 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " gruvbox color scheme
 Plug 'gruvbox-community/gruvbox'
-Plug 'ellisonleao/gruvbox.nvim'
 
 " texlive
 Plug 'lervag/vimtex'
 
 " polyglot
 Plug 'sheerun/vim-polyglot'
-
-" tree-sitter
-if has('nvim-0.7')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-endif
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -45,22 +39,6 @@ call plug#end()
 
 " commentary use single-line comments for c/c++
 autocmd FileType c,cpp setlocal commentstring=//%s
-
-" tree-sitter
-lua<<EOF
-require'nvim-treesitter.configs'.setup {
-    auto_install = true,
-
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-
-    indent = {
-        enable = true
-    }
-}
-EOF
 
 " vimtex
 let g:vimtex_compiler_method = 'latexmk'
