@@ -35,7 +35,27 @@ Plug 'sheerun/vim-polyglot'
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" tables
+Plug 'dhruvasagar/vim-table-mode'
+
+" utl
+Plug 'vim-scripts/utl.vim'
+
+" repeat everything
+Plug 'tpope/vim-repeat'
+
+" useful date & time increment/decrement
+Plug 'tpope/vim-speeddating'
+
+" org mode
+Plug 'jceb/vim-orgmode'
+
+" fugitive
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
+
+autocmd FileType org setlocal tw=2 sw=2
 
 " commentary use single-line comments for c/c++
 autocmd FileType c,cpp setlocal commentstring=//%s
