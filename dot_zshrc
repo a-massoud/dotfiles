@@ -81,8 +81,10 @@ fi
 # to install sdkman
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
 [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+[[ -s "$HOME/.emacs.d/bin" ]] && PATH="$PATH:$HOME/.emacs.d/bin"
 
 true

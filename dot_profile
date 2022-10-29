@@ -1,6 +1,6 @@
 export PAGER=/bin/less
 export LESS="F i M R W x4 x z-4 q"
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+export EDITOR=/usr/bin/emacs
+export VISUAL=/usr/bin/emacs
 export BROWSER=/usr/bin/firefox
 export TERMINAL=/usr/bin/kitty
