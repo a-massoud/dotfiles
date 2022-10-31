@@ -27,7 +27,7 @@ SAVEHIST=1000
 setopt notify
 unsetopt beep
 setopt histignorespace
-bindkey -v
+bindkey -e
 # End of lines configured by zsh-newuser-install
 
 if [[ $PATH != *"$HOME/.local/bin"* ]]
@@ -52,7 +52,7 @@ fi
 
 zplug 'zsh-users/zsh-syntax-highlighting', depth:1
 
-zplug 'softmoth/zsh-vim-mode', depth:1
+#zplug 'softmoth/zsh-vim-mode', depth:1
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
