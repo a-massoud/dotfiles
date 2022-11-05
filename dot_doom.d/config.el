@@ -75,6 +75,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; languagetool
+(setq langtool-language-tool-jar (expand-file-name "~/.local/share/languagetool/languagetool-commandline.jar"))
+
 ;; disable writegood-mode
 (add-load-path! "~/doom.d/lisp/writegood-mode")
 (after! writegood-mode
