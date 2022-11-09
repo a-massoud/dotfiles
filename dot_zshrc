@@ -41,6 +41,9 @@ alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
 alias ls='ls --color=auto -F'
 alias calc='ipython -i ~/.mathenv'
 
+# emacs-nox
+alias emacs="emacs -nw"
+
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
