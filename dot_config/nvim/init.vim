@@ -35,6 +35,9 @@ Plug 'sheerun/vim-polyglot'
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" tree-sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " tables
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -48,7 +51,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 
 " org mode
-Plug 'jceb/vim-orgmode'
+Plug 'nvim-orgmode/orgmode'
 
 " fugitive
 Plug 'tpope/vim-fugitive'
@@ -56,6 +59,29 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 autocmd FileType org setlocal tw=2 sw=2
+
+lua << EOF
+-- org-mode tree sitter ensure set up
+require'orgmode'.setup_ts_grammar()
+
+-- tree-sitter
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    sync_install = true,
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+}
+
+-- org mode
+require'orgmode'.setup {
+  org_agenda_files = {'~/org/*'},
+  org_default_notes_file = '~/org/index.org',
+}
+EOF
 
 " commentary use single-line comments for c/c++
 autocmd FileType c,cpp setlocal commentstring=//%s

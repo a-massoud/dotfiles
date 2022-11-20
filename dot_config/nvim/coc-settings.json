@@ -8,6 +8,7 @@
             "Massoud"
         ]
     },
+    "ltex.additionalRules.enablePickyRules": true,
     "clangd.compilationDatabasePath": "build",
     "clangd.arguments": [
         "-header-insertion=never"
