@@ -29,9 +29,6 @@ Plug 'gruvbox-community/gruvbox'
 " texlive
 Plug 'lervag/vimtex'
 
-" polyglot
-Plug 'sheerun/vim-polyglot'
-
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -69,9 +66,6 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",
     sync_install = true,
     highlight = {
-        enable = true,
-    },
-    indent = {
         enable = true,
     },
 }
