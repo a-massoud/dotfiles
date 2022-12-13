@@ -9,7 +9,7 @@
         ]
     },
     "ltex.additionalRules.enablePickyRules": true,
-    "clangd.compilationDatabasePath": "build",
+    "clangd.compilationDatabaseCandidates": ["${workspaceFolder}", "${workspaceFolder}/build"],
     "clangd.arguments": [
         "-header-insertion=never"
     ]
