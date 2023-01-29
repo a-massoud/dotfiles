@@ -32,6 +32,9 @@ Plug 'lervag/vimtex'
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" debugging
+Plug 'puremourning/vimspector'
+
 " tree-sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -77,6 +80,28 @@ require'orgmode'.setup {
   org_default_notes_file = '~/org/index.org',
 }
 EOF
+
+
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+" quit vimspector
+nmap <S-F6> <cmd>VimspectorReset<cr>
+
+" for normal mode - the word under the cursor
+nmap <leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <leader>di <Plug>VimspectorBalloonEval
+
+function s:SetUpTerminal()
+  call win_gotoid( g:vimspector_session_windows.terminal )
+  set norelativenumber nonumber
+endfunction
+
+augroup MyVimspectorUICustomistaion
+  autocmd!
+  autocmd User VimspectorTerminalOpened call s:SetUpTerminal()
+augroup END
 
 " commentary use single-line comments for c/c++
 autocmd FileType c,cpp setlocal commentstring=//%s
