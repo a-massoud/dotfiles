@@ -23,8 +23,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim', {'branch': '0.1.x'}
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
-" gruvbox color scheme
-Plug 'gruvbox-community/gruvbox'
+" nord color scheme
+Plug 'arcticicestudio/nord-vim'
 
 " texlive
 Plug 'lervag/vimtex'
@@ -154,7 +154,7 @@ let g:bufferline_echo=0
 " airline
 if (!empty($DISPLAY))
     set noshowmode
-    let g:airline_theme='gruvbox'
+    let g:airline_theme='nord'
     let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#show_close_button=0
@@ -176,9 +176,13 @@ set nojs
 
 " syntax highlighting
 set cursorline
+let g:nord_bold = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
 syntax on
 try
-    colorscheme gruvbox
+    colorscheme nord
 catch
 endtry
 set bg=dark
