@@ -9,6 +9,7 @@
         ]
     },
     "ltex.additionalRules.enablePickyRules": true,
+    "ltex.disabledRules": {"en-US": ["PASSIVE_VOICE"]},
     "clangd.compilationDatabaseCandidates": ["${workspaceFolder}", "${workspaceFolder}/build"],
     "clangd.arguments": [
         "-header-insertion=never"
