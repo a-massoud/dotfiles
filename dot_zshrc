@@ -87,6 +87,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
 [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+[[ -s "$HOME/.cargo/bin" ]] && PATH="$PATH:$HOME/.cargo/bin"
 
 [[ -s "$HOME/.emacs.d/bin" ]] && PATH="$PATH:$HOME/.emacs.d/bin"
 
