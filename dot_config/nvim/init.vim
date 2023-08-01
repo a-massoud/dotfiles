@@ -26,9 +26,6 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 " nord color scheme
 Plug 'arcticicestudio/nord-vim'
 
-" tree-sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 " tables
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -47,19 +44,6 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 autocmd FileType org setlocal tw=2 sw=2
-
-lua << EOF
--- tree-sitter
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",
-    sync_install = true,
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = {'org'},
-    },
-}
-EOF
-
 
 " commentary use single-line comments for c/c++
 autocmd FileType c,cpp setlocal commentstring=//%s
