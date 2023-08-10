@@ -23,6 +23,9 @@ vim.fn['plug#']('tpope/vim-fugitive')
 -- lastplace
 vim.fn['plug#']('farmergreg/vim-lastplace')
 
+-- pear-tree
+vim.fn['plug#']('tmsvg/pear-tree')
+
 -- airline
 if (os.getenv('DISPLAY') ~= nil) then
     vim.fn['plug#']('vim-airline/vim-airline')
@@ -43,7 +46,6 @@ vim.fn['plug#']('dhruvasagar/vim-table-mode')
 
 -- utl
 vim.fn['plug#']('vim-scripts/utl.vim')
-vim.fn['plug#']('honza/vim-snippets')
 
 -- snippets
 vim.fn['plug#']('SirVer/ultisnips')
@@ -75,6 +77,11 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         vim.opt.commentstring = '//%s'
     end
 })
+
+-- pear-tree enable smart pairs
+vim.g.pear_tree_smart_openers = true
+vim.g.pear_tree_smart_closers = true
+vim.g.pear_tree_smart_backspace = true
 
 -- basic editing options
 vim.opt.tabstop = 4
