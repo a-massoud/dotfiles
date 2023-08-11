@@ -23,9 +23,6 @@ vim.fn['plug#']('tpope/vim-fugitive')
 -- lastplace
 vim.fn['plug#']('farmergreg/vim-lastplace')
 
--- pear-tree
-vim.fn['plug#']('tmsvg/pear-tree')
-
 -- airline
 if (os.getenv('DISPLAY') ~= nil) then
     vim.fn['plug#']('vim-airline/vim-airline')
@@ -77,11 +74,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         vim.opt.commentstring = '//%s'
     end
 })
-
--- pear-tree enable smart pairs
-vim.g.pear_tree_smart_openers = true
-vim.g.pear_tree_smart_closers = true
-vim.g.pear_tree_smart_backspace = true
 
 -- basic editing options
 vim.opt.tabstop = 4
@@ -164,7 +156,8 @@ vim.api.nvim_create_autocmd({ 'TermOpen' }, {
 require('telescope').setup {
     extensions = {
         file_browser = {
-            hijack_netrw = true
+            hijack_netrw = true,
+            respect_gitignore = false
         }
     }
 }
@@ -173,7 +166,7 @@ require('telescope').load_extension 'file_browser'
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ff',
-    '<cmd>Telescope find_files hidden=true<cr>',
+    '<cmd>Telescope find_files hidden=true no_ignore=true no_ignore_parent=true<cr>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
