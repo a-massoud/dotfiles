@@ -153,11 +153,17 @@ vim.api.nvim_create_autocmd({ 'TermOpen' }, {
 })
 
 -- telescope
+local fb_actions = require "telescope".extensions.file_browser.actions
 require('telescope').setup {
     extensions = {
         file_browser = {
             hijack_netrw = true,
-            respect_gitignore = false
+            respect_gitignore = false,
+            mappings = {
+                ['i'] = {
+                    ['<A-CR>'] = fb_actions.create_from_prompt
+                }
+            }
         }
     }
 }
