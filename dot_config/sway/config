@@ -262,4 +262,7 @@ bindsym XF86Search exec $menu
 # have things not be miserable
 exec /usr/lib/xdg-desktop-portal &
 
+# mako
+exec mako &
+
 include /etc/sway/config.d/*
