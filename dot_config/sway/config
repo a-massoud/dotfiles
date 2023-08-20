@@ -68,9 +68,9 @@ input "type:keyboard" {
     xkb_options "ctrl:nocaps,compose:ralt,grp:rctrl_rshift_toggle"
 }
 
-input "type:mouse" {
+input "type:pointer" {
     accel_profile "flat"
-    pointer_accel 0.2
+    pointer_accel 0
 }
 
 input "type:touchpad" {
