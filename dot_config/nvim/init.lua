@@ -23,15 +23,14 @@ vim.fn['plug#']('tpope/vim-fugitive')
 -- lastplace
 vim.fn['plug#']('farmergreg/vim-lastplace')
 
--- airline
+-- lualine
 if (os.getenv('DISPLAY') ~= nil) then
-    vim.fn['plug#']('vim-airline/vim-airline')
-    vim.fn['plug#']('vim-airline/vim-airline-themes')
+    vim.fn['plug#']('nvim-lualine/lualine.nvim')
 end
 
 -- telescope
 vim.fn['plug#']('nvim-lua/plenary.nvim')
-vim.fn['plug#']('ryanoasis/vim-devicons')
+vim.fn['plug#']('nvim-tree/nvim-web-devicons')
 vim.fn['plug#']('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
 vim.fn['plug#']('nvim-telescope/telescope-file-browser.nvim')
 
@@ -112,23 +111,27 @@ vim.opt.wildmenu = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- airline
+-- lualine
 vim.g.bufferline_echo = 0
 if (os.getenv('DISPLAY') ~= nil) then
     vim.opt.showmode = false
-    vim.g.airline_theme = 'onedark'
-    vim.g.airline_powerline_fonts = 1
-    vim.g['airline#extensions#tabline#enabled'] = 1
-    vim.g['airline#extensions#tabline#show_close_button'] = 0
-    vim.g['airline#extensions#tabline#tabs_label'] = ''
-    vim.g['airline#extensions#tabline#buffers_label'] = ''
-    vim.g['airline#extensions#tabline#fnamemod'] = ':t'
-    vim.g['airline#extensions#tabline#show_tab_count'] = 0
-    vim.g['airline#extensions#tabline#show_buffers'] = 0
-    vim.g['airline#extensions#tabline#show_splits'] = 0
-    vim.g['airline#extensions#tabline#show_tab_nr'] = 0
-    vim.g['airline#extensions#tabline#show_tab_type'] = 0
-    vim.g['airline#extensions#tabline#tab_min_count'] = 2
+    local lualine = require('lualine')
+    lualine.setup {
+        options = { theme = 'onedark' }
+    }
+    -- vim.g.airline_theme = 'onedark'
+    -- vim.g.airline_powerline_fonts = 1
+    -- vim.g['airline#extensions#tabline#enabled'] = 1
+    -- vim.g['airline#extensions#tabline#show_close_button'] = 0
+    -- vim.g['airline#extensions#tabline#tabs_label'] = ''
+    -- vim.g['airline#extensions#tabline#buffers_label'] = ''
+    -- vim.g['airline#extensions#tabline#fnamemod'] = ':t'
+    -- vim.g['airline#extensions#tabline#show_tab_count'] = 0
+    -- vim.g['airline#extensions#tabline#show_buffers'] = 0
+    -- vim.g['airline#extensions#tabline#show_splits'] = 0
+    -- vim.g['airline#extensions#tabline#show_tab_nr'] = 0
+    -- vim.g['airline#extensions#tabline#show_tab_type'] = 0
+    -- vim.g['airline#extensions#tabline#tab_min_count'] = 2
 else
     vim.opt.showmode = true
 end
@@ -350,6 +353,7 @@ lspconfig.lua_ls.setup {
 }
 lspconfig.texlab.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
+lspconfig.hls.setup { filetypes = { 'haskell', 'lhaskell', 'cabal' } }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
