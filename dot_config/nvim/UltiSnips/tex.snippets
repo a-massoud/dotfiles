@@ -17,7 +17,7 @@ snippet template "Basic template" b
 
 \documentclass[12pt,letterpaper]{article}
 
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
 
 \usepackage{graphicx}
 
@@ -25,12 +25,12 @@ snippet template "Basic template" b
 \setmainlanguage{en}
 \setotherlanguage{es}
 
-\usepackage{unicode-math}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
 \setmainfont{Times New Roman}[RawFeature={+kern,+liga,+dlig,+swsh}]
 \setmathfont{STIX Two Math}[RawFeature={+kern,+ss01}]
 
-\usepackage{microtype}[babel]
+\usepackage[babel,protrusion=false]{microtype}
 
 \begin{document}
 $0
@@ -99,23 +99,28 @@ snippet =< "implied by" Ai
 endsnippet
 
 context "math()"
+snippet := "definition" Ai
+\coloneqq
+endsnippet
+
+context "math()"
 snippet iff "iff" Ai
 \iff
 endsnippet
 
 snippet mk "Math" wA
-$ ${1} $`!p
+$ $1 $`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
 	snip.rv = ' '
 else:
 	snip.rv = ''
-`$2
+`$0
 endsnippet
 
 snippet dm "Math" wA
 \[
 ${1:${VISUAL}}
-.\] $0
+\] $0
 endsnippet
 
 snippet ali "Align" bA
