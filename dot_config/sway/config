@@ -65,7 +65,7 @@ exec swayidle -w \
 
 input "type:keyboard" {
     xkb_layout "us,gr,ara"
-    xkb_options "ctrl:nocaps,compose:ralt,grp:rctrl_rshift_toggle"
+    xkb_options "ctrl:nocaps,lv3:switch,compose:ralt,grp:ctrls_toggle"
 }
 
 input "type:pointer" {

@@ -21,9 +21,10 @@ snippet template "Basic template" b
 
 \usepackage{graphicx}
 
+\usepackage{csquotes}
+
 \usepackage{polyglossia}
-\setmainlanguage{en}
-\setotherlanguage{es}
+\setmainlanguage[variant=american]{english}
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
@@ -691,6 +692,10 @@ endsnippet
 
 snippet em "emph"
 \emph{$1}$0
+endsnippet
+
+snippet eq "enquote"
+\enquote{$1}$0
 endsnippet
 
 # vim:ft=snippets

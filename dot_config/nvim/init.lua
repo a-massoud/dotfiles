@@ -243,6 +243,20 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- F5 to switch rl
+vim.api.nvim_set_keymap(
+    '',
+    '<F5>',
+    '<cmd>set rl!<CR>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'i',
+    '<F5>',
+    '<Esc><cmd>set rl!<CR>a',
+    { noremap = true }
+)
+
 -- ultisnips
 vim.g.UltiSnipsExpandTrigger = '<tab>'
 vim.g.UltiSnipsJumpForwardTrigger = '<c-w>'
