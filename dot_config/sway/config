@@ -277,4 +277,7 @@ exec /usr/lib/xdg-desktop-portal &
 # mako
 exec mako &
 
+# blueman
+exec blueman-applet &
+
 include /etc/sway/config.d/*
