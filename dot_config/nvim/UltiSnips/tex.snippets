@@ -15,23 +15,32 @@ endglobal
 snippet template "Basic template" b
 % !TeX program=lualatex
 
-\documentclass[12pt,letterpaper]{article}
+\documentclass{article}
+
+\usepackage[letterpaper]{geometry}
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{chemmacros}
+\usepackage{chemfig}
 
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
-\usepackage[autostyle]{csquotes}
+\usepackage[autostyle,autopunct]{csquotes}
 
 \usepackage{polyglossia}
 \setmainlanguage[variant=american]{english}
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}[RawFeature={+kern,+liga,+dlig,+swsh}]
+\setmainfont{Times New Roman}[RawFeature={+kern,+liga,+dlig}]
 \setmathfont{STIX Two Math}[RawFeature={+kern,+ss01}]
 
 \usepackage[babel,protrusion=false]{microtype}
+
+\usepackage{hyperref}
 
 \begin{document}
 $0
@@ -694,8 +703,12 @@ snippet em "emph"
 \emph{$1}$0
 endsnippet
 
-snippet eq "enquote"
-\enquote{$1}$0
+snippet qq "textquote"
+\textquote{$1}$0
+endsnippet
+
+snippet cqq "blockcquote"
+\blockcquote[$2]{$3}{$1}$0
 endsnippet
 
 # vim:ft=snippets
