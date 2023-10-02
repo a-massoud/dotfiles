@@ -280,4 +280,7 @@ exec mako &
 # blueman
 exec blueman-applet &
 
+# network
+exec nm-applet &
+
 include /etc/sway/config.d/*
