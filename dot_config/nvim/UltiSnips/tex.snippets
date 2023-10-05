@@ -15,7 +15,7 @@ endglobal
 snippet template "Basic template" b
 % !TeX program=lualatex
 
-\documentclass{article}
+\documentclass{scrartcl}
 
 \usepackage[letterpaper]{geometry}
 
@@ -35,8 +35,10 @@ snippet template "Basic template" b
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}[RawFeature={+kern,+liga,+dlig}]
-\setmathfont{STIX Two Math}[RawFeature={+kern,+ss01}]
+\setmainfont{STIX Two Text}[RawFeature={+kern,+liga,+dlig,+onum,+pnum}]
+\setsansfont{Source Sans Pro}[RawFeature={+kern,+liga,+dlig,+onum,+pnum}]
+\setmonofont{Source Code Pro}[RawFeature={+onum}]
+\setmathfont{STIX Two Math}[RawFeature={+kern,+pnum}]
 
 \usepackage[babel,protrusion=false]{microtype}
 
@@ -100,10 +102,12 @@ snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
+context "math()"
 snippet => "implies" Ai
 \implies
 endsnippet
 
+context "math()"
 snippet =< "implied by" Ai
 \impliedby
 endsnippet
@@ -111,6 +115,11 @@ endsnippet
 context "math()"
 snippet := "definition" Ai
 \coloneqq
+endsnippet
+
+context "math"
+snippet eq "equivalent"
+\equiv
 endsnippet
 
 context "math()"
@@ -412,10 +421,6 @@ $0
 endsnippet
 
 context "math()"
-snippet mcal "mathcal" iA
-\mathcal{$1}$0
-endsnippet
-
 snippet lll "l" iA
 \ell
 endsnippet
@@ -673,6 +678,12 @@ priority 100
 context "math()"
 snippet bf "mathbf"
 \mathbf{$1}$0
+endsnippet
+
+priority 100
+context "math()"
+snippet rm "mathrm"
+\mathrm{$1}$0
 endsnippet
 
 snippet sec "section"
