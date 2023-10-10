@@ -15,9 +15,9 @@ endglobal
 snippet template "Basic template" b
 % !TeX program=lualatex
 
-\documentclass{scrartcl}
+\documentclass[12pt]{article}
 
-\usepackage[letterpaper]{geometry}
+\usepackage[letterpaper,DIV=calc]{typearea}
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{chemmacros}
@@ -44,6 +44,7 @@ snippet template "Basic template" b
 
 \usepackage{hyperref}
 
+\recalctypearea
 \begin{document}
 $0
 \end{document}
