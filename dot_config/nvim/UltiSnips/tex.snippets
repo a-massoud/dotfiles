@@ -315,14 +315,8 @@ snippet cb "^3" iA
 ^3
 endsnippet
 
-context "math()"
-snippet td "to the ... power" iA
+snippet ^^ "to the ... power" iA
 ^{$1}$0
-endsnippet
-
-context "math()"
-snippet rd "to the ... power" iA
-^{($1)}$0
 endsnippet
 
 snippet __ "subscript" iA
@@ -604,7 +598,7 @@ snippet case "cases" wA
 endsnippet
 
 snippet SI "SI" iA
-\SI{$1}{$2}
+\qty{$1}{$2}
 endsnippet
 
 snippet bigfun "Big function" iA
