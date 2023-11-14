@@ -36,10 +36,12 @@ snippet template "Basic template" b
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
-\setmainfont{STIX Two Text}[RawFeature={+kern,+liga,+dlig,+onum,+pnum}]
-\setsansfont{Source Sans Pro}[RawFeature={+kern,+liga,+dlig,+onum,+pnum}]
-\setmonofont{Source Code Pro}[RawFeature={+onum}]
-\setmathfont{STIX Two Math}[RawFeature={+kern,+pnum}]
+\setmainfont{STIX Two Text}[Kerning=On,Ligatures={TeX,Common},
+	Numbers={OldStyle,Proportional}]
+\setsansfont{Source Sans Pro}[Kerning=On,Ligatures={TeX,Common},
+	Numbers={OldStyle,Proportional}]
+\setmonofont{Source Code Pro}[Numbers={OldStyle}]
+\setmathfont{STIX Two Math}
 
 \usepackage[babel,protrusion=false]{microtype}
 
