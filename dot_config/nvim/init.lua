@@ -409,19 +409,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.api.nvim_set_keymap(
     'n',
-    '<space>gr',
+    'gr',
     '<cmd>Telescope lsp_references<cr>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<space>gd',
+    'gd',
     '<cmd>Telescope lsp_definitions<cr>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<space>gi',
+    'gi',
     '<cmd>Telescope lsp_implementations<cr>',
     { noremap = true }
 )
