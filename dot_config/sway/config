@@ -236,10 +236,10 @@ gaps inner 10
 # colors
 #
 # <border> <background> <text> [<indicator> [<child_border>]]
-client.focused c678dd c678dd 282c34 56b6c2
-client.focused_inactive 282c34 282c34 979eab 56b6c2
-client.unfocused 282c34 282c34 979eab
-client.urgent e06c75 e06c75 ffffff 56b6c2
+client.focused 6c71c4 6c71c4 002b36 2aa198
+client.unfocused 002b36 002b36 657b83 2aa198
+client.focused_inactive 002b36 002b36 657b83 56b6c2
+client.urgent dc322f dc322f 002b36 56b6c2
 
 #
 # font
