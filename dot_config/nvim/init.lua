@@ -34,8 +34,9 @@ vim.fn['plug#']('nvim-tree/nvim-web-devicons')
 vim.fn['plug#']('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
 vim.fn['plug#']('nvim-telescope/telescope-file-browser.nvim')
 
--- onedark color scheme
-vim.fn['plug#']('joshdick/onedark.vim')
+-- solarized dark color scheme
+-- vim.fn['plug#']('overcache/NeoSolarized')
+vim.fn['plug#']('lifepillar/vim-solarized8')
 
 -- tables
 vim.fn['plug#']('dhruvasagar/vim-table-mode')
@@ -117,7 +118,7 @@ if (os.getenv('DISPLAY') ~= nil) then
     vim.opt.showmode = false
     local lualine = require('lualine')
     lualine.setup {
-        options = { theme = 'onedark' }
+        options = { theme = 'solarized_dark' }
     }
     -- vim.g.airline_theme = 'onedark'
     -- vim.g.airline_powerline_fonts = 1
@@ -138,13 +139,21 @@ end
 
 -- syntax
 vim.opt.cursorline = true
-vim.g.onedark_terminal_italic = 1
-vim.cmd('colorscheme onedark')
 vim.opt.bg = 'dark'
 vim.env['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
 if (vim.fn.has('termguicolors')) then
     vim.opt.termguicolors = true
 end
+-- vim.g.neosolarized_contrast = 'normal'
+-- vim.g.neosolarized_visibility = 'normal'
+-- vim.g.neosolarized_vertSplitBgTrans = 1
+-- vim.g.neosolarized_bold = 1
+-- vim.g.neosolarized_underline = 1
+-- vim.g.neosolarized_italic = 1
+-- vim.g.neosolarized_termBoldAsBright = 1
+
+-- vim.cmd('colorscheme NeoSolarized')
+vim.cmd('colorscheme solarized8')
 
 -- no line numbers in terminal
 vim.api.nvim_create_autocmd({ 'TermOpen' }, {
