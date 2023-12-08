@@ -244,7 +244,7 @@ client.urgent dc322f dc322f 002b36 56b6c2
 #
 # font
 #
-font pango:FiraMono Nerd Font Bold 11
+font pango:SauceCodePro Nerd Font Bold 11
 
 #
 # Status Bar:

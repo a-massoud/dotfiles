@@ -260,6 +260,20 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- F5 to switch arab
+vim.api.nvim_set_keymap(
+    '',
+    '<F6>',
+    '<cmd>set arab!<CR>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'i',
+    '<F6>',
+    '<Esc><cmd>set arab!<CR>a',
+    { noremap = true }
+)
+
 -- ultisnips
 vim.g.UltiSnipsExpandTrigger = '<tab>'
 vim.g.UltiSnipsJumpForwardTrigger = '<c-w>'
