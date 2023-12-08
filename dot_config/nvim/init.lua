@@ -24,9 +24,7 @@ vim.fn['plug#']('tpope/vim-fugitive')
 vim.fn['plug#']('farmergreg/vim-lastplace')
 
 -- lualine
-if (os.getenv('DISPLAY') ~= nil) then
-    vim.fn['plug#']('nvim-lualine/lualine.nvim')
-end
+vim.fn['plug#']('nvim-lualine/lualine.nvim')
 
 -- telescope
 vim.fn['plug#']('nvim-lua/plenary.nvim')
@@ -114,28 +112,24 @@ vim.opt.relativenumber = true
 
 -- lualine
 vim.g.bufferline_echo = 0
-if (os.getenv('DISPLAY') ~= nil) then
-    vim.opt.showmode = false
-    local lualine = require('lualine')
-    lualine.setup {
-        options = { theme = 'solarized_dark' }
-    }
-    -- vim.g.airline_theme = 'onedark'
-    -- vim.g.airline_powerline_fonts = 1
-    -- vim.g['airline#extensions#tabline#enabled'] = 1
-    -- vim.g['airline#extensions#tabline#show_close_button'] = 0
-    -- vim.g['airline#extensions#tabline#tabs_label'] = ''
-    -- vim.g['airline#extensions#tabline#buffers_label'] = ''
-    -- vim.g['airline#extensions#tabline#fnamemod'] = ':t'
-    -- vim.g['airline#extensions#tabline#show_tab_count'] = 0
-    -- vim.g['airline#extensions#tabline#show_buffers'] = 0
-    -- vim.g['airline#extensions#tabline#show_splits'] = 0
-    -- vim.g['airline#extensions#tabline#show_tab_nr'] = 0
-    -- vim.g['airline#extensions#tabline#show_tab_type'] = 0
-    -- vim.g['airline#extensions#tabline#tab_min_count'] = 2
-else
-    vim.opt.showmode = true
-end
+vim.opt.showmode = false
+local lualine = require('lualine')
+lualine.setup {
+    options = { theme = 'solarized_dark' }
+}
+-- vim.g.airline_theme = 'onedark'
+-- vim.g.airline_powerline_fonts = 1
+-- vim.g['airline#extensions#tabline#enabled'] = 1
+-- vim.g['airline#extensions#tabline#show_close_button'] = 0
+-- vim.g['airline#extensions#tabline#tabs_label'] = ''
+-- vim.g['airline#extensions#tabline#buffers_label'] = ''
+-- vim.g['airline#extensions#tabline#fnamemod'] = ':t'
+-- vim.g['airline#extensions#tabline#show_tab_count'] = 0
+-- vim.g['airline#extensions#tabline#show_buffers'] = 0
+-- vim.g['airline#extensions#tabline#show_splits'] = 0
+-- vim.g['airline#extensions#tabline#show_tab_nr'] = 0
+-- vim.g['airline#extensions#tabline#show_tab_type'] = 0
+-- vim.g['airline#extensions#tabline#tab_min_count'] = 2
 
 -- syntax
 vim.opt.cursorline = true
