@@ -149,15 +149,6 @@ end
 -- vim.cmd('colorscheme NeoSolarized')
 vim.cmd('colorscheme solarized8')
 
--- no line numbers in terminal
-vim.api.nvim_create_autocmd({ 'TermOpen' }, {
-    pattern = '*',
-    callback = function(ev)
-        vim.opt.number = false
-        vim.opt.relativenumber = false
-    end
-})
-
 -- telescope
 local fb_actions = require "telescope".extensions.file_browser.actions
 require('telescope').setup {
