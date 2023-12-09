@@ -90,7 +90,8 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "format": "{:%Y-%m-%d %H:%M}",
+        "format": "{:%F %T %Z}",
+        "interval": 1
     },
     "cpu": {
         "format": "{usage}% ",
@@ -124,7 +125,8 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "interval": 30
     },
     "battery#bat2": {
         "bat": "BAT2"
