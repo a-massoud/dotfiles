@@ -74,17 +74,10 @@ setopt monitor
 
 # go
 
-if [[ $PATH != *"$(go env GOPATH)"* ]]
+if command -v go &> /dev/null && [[ $PATH != *"$(go env GOPATH)"* ]]
 then
     PATH=$PATH:$(go env GOPATH)/bin
 fi
-
-# run
-# curl -s "https://get.sdkman.io" | bash
-# to install sdkman
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
 [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 [[ -s "$HOME/.cargo/bin" ]] && PATH="$PATH:$HOME/.cargo/bin"
