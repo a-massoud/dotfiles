@@ -169,7 +169,7 @@ require('telescope').load_extension 'file_browser'
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ff',
-    '<cmd>Telescope find_files hidden=true no_ignore=true no_ignore_parent=true<cr>',
+    '<cmd>Telescope find_files hidden=true<cr>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
