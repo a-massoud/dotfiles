@@ -8,9 +8,6 @@ vim.fn['plug#']('tpope/vim-surround')
 -- commentary.vim
 vim.fn['plug#']('tpope/vim-commentary')
 
--- editorconfig
-vim.fn['plug#']('editorconfig/editorconfig-vim')
-
 -- repeat
 vim.fn['plug#']('tpope/vim-repeat')
 
