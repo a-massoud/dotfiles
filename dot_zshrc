@@ -32,7 +32,7 @@ bindkey -e
 
 if [[ $PATH != *"$HOME/.local/bin"* ]]
 then
-    PATH=$PATH:$HOME/.local/bin
+    export PATH=$HOME/.local/bin:$PATH
 fi
 
 alias dog='pygmentize -g -O style=colorful'
@@ -43,29 +43,6 @@ alias calc='ipython -i ~/.mathenv'
 
 # emacs-nox
 alias emacs="emacs -nw"
-
-# source ~/.zplug/init.zsh
-
-# zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
-
-# if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-#     zplug 'romkatv/powerlevel10k', as:theme, depth:1
-#     ZLE_RPROMPT_INDENT=0
-# fi
-
-# zplug 'zsh-users/zsh-syntax-highlighting', depth:1
-
-# zplug 'softmoth/zsh-vim-mode', depth:1
-
-# # Install plugins if there are plugins that have not been installed
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
-
-# zplug load
 
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
@@ -84,13 +61,13 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=0"
 
 if command -v go &> /dev/null && [[ $PATH != *"$(go env GOPATH)"* ]]
 then
-    PATH=$PATH:$(go env GOPATH)/bin
+    export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
 [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-[[ -s "$HOME/.cargo/bin" ]] && PATH="$PATH:$HOME/.cargo/bin"
+[[ -s "$HOME/.cargo/bin" ]] && export PATH="$PATH:$HOME/.cargo/bin"
 
-[[ -s "$HOME/.emacs.d/bin" ]] && PATH="$PATH:$HOME/.emacs.d/bin"
+[[ -s "$HOME/.emacs.d/bin" ]] && export PATH="$PATH:$HOME/.emacs.d/bin"
 
 true
 
