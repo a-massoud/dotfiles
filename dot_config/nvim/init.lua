@@ -1,66 +1,45 @@
 vim.g.mapleader = ' '
 
-vim.call('plug#begin')
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable',
+        lazypath
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- surround.vim
-vim.fn['plug#']('tpope/vim-surround')
-
--- commentary.vim
-vim.fn['plug#']('tpope/vim-commentary')
-
--- repeat
-vim.fn['plug#']('tpope/vim-repeat')
-
--- date/time
-vim.fn['plug#']('tpope/vim-speeddating')
-
--- fugitive
-vim.fn['plug#']('tpope/vim-fugitive')
-
--- lastplace
-vim.fn['plug#']('farmergreg/vim-lastplace')
-
--- lualine
-vim.fn['plug#']('nvim-lualine/lualine.nvim')
-
--- telescope
-vim.fn['plug#']('nvim-lua/plenary.nvim')
-vim.fn['plug#']('nvim-tree/nvim-web-devicons')
-vim.fn['plug#']('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
-vim.fn['plug#']('nvim-telescope/telescope-file-browser.nvim')
-
--- solarized dark color scheme
--- vim.fn['plug#']('overcache/NeoSolarized')
-vim.fn['plug#']('lifepillar/vim-solarized8')
-
--- tables
-vim.fn['plug#']('dhruvasagar/vim-table-mode')
-
--- utl
-vim.fn['plug#']('vim-scripts/utl.vim')
-
--- snippets
-vim.fn['plug#']('SirVer/ultisnips')
-
--- lsp
-vim.fn['plug#']('neovim/nvim-lspconfig')
-vim.fn['plug#']('hrsh7th/cmp-nvim-lsp')
-vim.fn['plug#']('hrsh7th/cmp-buffer')
-vim.fn['plug#']('hrsh7th/cmp-path')
-vim.fn['plug#']('hrsh7th/cmp-cmdline')
-vim.fn['plug#']('hrsh7th/nvim-cmp')
-vim.fn['plug#']('quangnguyen30192/cmp-nvim-ultisnips')
-
--- jdtls
-vim.fn['plug#']('mfussenegger/nvim-jdtls')
-
--- tex
-vim.fn['plug#']('lervag/vimtex')
-
--- emmet
-vim.fn['plug#']('mattn/emmet-vim')
-
-vim.call('plug#end')
+require('lazy').setup({
+    'tpope/vim-surround',
+    'tpope/vim-commentary',
+    'tpope/vim-repeat',
+    'tpope/vim-speeddating',
+    'tpope/vim-fugitive',
+    'farmergreg/vim-lastplace',
+    'nvim-lualine/lualine.nvim',
+    'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
+    {'nvim-telescope/telescope.nvim', branch = '0.1.x'},
+    'nvim-telescope/telescope-file-browser.nvim',
+    'lifepillar/vim-solarized8',
+    'dhruvasagar/vim-table-mode',
+    'vim-scripts/utl.vim',
+    'SirVer/ultisnips',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'quangnguyen30192/cmp-nvim-ultisnips',
+    'mfussenegger/nvim-jdtls',
+    'lervag/vimtex',
+    'mattn/emmet-vim'
+})
 
 -- comentary: use single-line comments for c/c++
 vim.api.nvim_create_autocmd({ 'FileType' }, {
