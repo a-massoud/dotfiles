@@ -38,7 +38,8 @@ require('lazy').setup({
     'quangnguyen30192/cmp-nvim-ultisnips',
     'mfussenegger/nvim-jdtls',
     'lervag/vimtex',
-    'mattn/emmet-vim'
+    'mattn/emmet-vim',
+    'tikhomirov/vim-glsl'
 })
 
 -- comentary: use single-line comments for c/c++
