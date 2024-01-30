@@ -313,6 +313,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup { capabilities = capabilities }
 lspconfig.tsserver.setup { capabilities = capabilities }
+lspconfig.jsonls.setup { capabilities = capabilities }
 lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {
@@ -353,7 +354,7 @@ lspconfig.lua_ls.setup {
 }
 lspconfig.texlab.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
-lspconfig.hls.setup { filetypes = { 'haskell', 'lhaskell', 'cabal' } }
+lspconfig.hls.setup { filetypes = { 'haskell', 'lhaskell', 'cabal' }, capabilities = capabilities }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
