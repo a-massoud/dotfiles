@@ -5,5 +5,4 @@ export VISUAL=/usr/bin/nvim
 export BROWSER=/usr/bin/firefox
 export TERMINAL=/usr/bin/kitty
 export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORMTHEME=gnome
 source ~/.profile_private
