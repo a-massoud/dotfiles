@@ -7,4 +7,5 @@ export TERMINAL=/usr/bin/kitty
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_QPA_PLATFORM=xcb
+export MAKEFLAGS=-j$(($(grep -c "^processor" /proc/cpuinfo)))
 source ~/.profile_private
