@@ -138,7 +138,8 @@ require('nvim-treesitter.configs').setup {
     auto_install = true,
     ignore_install = {},
     highlight = {
-        enable = true
+        enable = true,
+        disable = { 'tex', 'latex' }
     },
     indent = {
         enable = true
