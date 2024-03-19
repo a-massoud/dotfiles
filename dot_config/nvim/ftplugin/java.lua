@@ -30,6 +30,61 @@ local config = {
                 }
             }
         }
-    }
+    },
+}
+config['init_options'] = {
+    bundles = {
+        vim.fn.glob("/usr/share/java-debug/com.microsoft.java.debug.plugin.jar", 1)
+    },
 }
 require('jdtls').start_or_attach(config)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<A-o>',
+    '<cmd>lua require\'jdtls\'.organize_imports()<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    'crv',
+    '<cmd>lua require(\'jdtls\').extract_variable()<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'v',
+    'crv',
+    '<esc><cmd>lua require(\'jdtls\').extract_variable(true)<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    'crc',
+    '<cmd>lua require(\'jdtls\').extract_constant()<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'v',
+    'crc',
+    '<esc><cmd>lua require(\'jdtls\').extract_constant(true)<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'v',
+    'crm',
+    '<esc><cmd>lua require(\'jdtls\').extract_method(true)<cr>',
+    { noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>djf',
+    '<cmd>lua require\'jdtls\'.test_class()<cr>',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>djm',
+    '<cmd>lua require\'jdtls\'.test_nearest_method()<cr>',
+    { noremap = true }
+)

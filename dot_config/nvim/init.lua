@@ -23,7 +23,8 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
-    { 'nvim-telescope/telescope.nvim', branch = '0.1.x' },
+    { 'nvim-telescope/telescope.nvim',   branch = '0.1.x' },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'nvim-telescope/telescope-file-browser.nvim',
     'lifepillar/vim-solarized8',
     'dhruvasagar/vim-table-mode',
@@ -36,7 +37,11 @@ require('lazy').setup({
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
     'quangnguyen30192/cmp-nvim-ultisnips',
-    'mfussenegger/nvim-jdtls',
+    'mfussenegger/nvim-dap',
+    'nvim-neotest/nvim-nio',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    { 'mfussenegger/nvim-jdtls', dependencies = 'mfussenegger/nvim-dap' },
     'lervag/vimtex',
     'mattn/emmet-vim',
     'tikhomirov/vim-glsl'
@@ -125,6 +130,20 @@ end
 
 -- vim.cmd('colorscheme NeoSolarized')
 vim.cmd('colorscheme solarized8')
+
+-- treesitter
+require('nvim-treesitter.configs').setup {
+    ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
+    sync_install = false,
+    auto_install = true,
+    ignore_install = {},
+    highlight = {
+        enable = true
+    },
+    indent = {
+        enable = true
+    }
+}
 
 -- telescope
 local fb_actions = require "telescope".extensions.file_browser.actions
@@ -354,7 +373,6 @@ lspconfig.lua_ls.setup {
 }
 lspconfig.texlab.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
-lspconfig.hls.setup { filetypes = { 'haskell', 'lhaskell', 'cabal' }, capabilities = capabilities }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -445,6 +463,134 @@ else
         .substitute(vim.fn.system("which python3"), "\n", "", "g")
 end
 
+-- nvim-dap
+local dap, dapui = require('dap'), require('dapui')
+dap.adapters.codelldb = {
+    type = 'server',
+    port = '${port}',
+    executable = {
+        command = '/usr/bin/codelldb',
+        args = { '--port', '${port}' }
+    },
+    name = 'codelldb'
+}
+dap.adapters.cpp = dap.adapters.codelldb
+dap.adapters.c = dap.adapters.codelldb
+dap.adapters.rust = dap.adapters.codelldb
+
+dap.adapters.python = {
+    type = 'executable',
+    command = '/usr/bin/python',
+    args = { '-m', 'debugpy.adapter' }
+}
+
+dap.configurations.python = {
+    {
+        type = 'python',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        pythonPath = vim.g.python3_host_prog
+    }
+}
+dap.configurations.cpp = {
+    {
+        name = 'Launch Codelldb',
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input(
+                'Path to executable: ',
+                vim.fn.getcwd() .. '/',
+                'file'
+            )
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        runInTerminal = false
+    }
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+dapui.setup()
+dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+end
+require('nvim-dap-virtual-text').setup {}
+
+vim.keymap.set(
+    'n',
+    '<leader>dk',
+    function()
+        require('dap').continue()
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>dl',
+    function()
+        require('dap').run_last()
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>db',
+    function()
+        require('dap').toggle_breakpoint()
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>dB',
+    function()
+        require('dap').set_breakpoint(
+            vim.fn.input('Breakpoint condition: ')
+        )
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>dlp',
+    function()
+        require('dap').set_breakpoint(
+            nil,
+            nil,
+            vim.fn.input('Log point message: ')
+        )
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>dn',
+    function()
+        require('dap').step_over()
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>ds',
+    function()
+        require('dap').step_into()
+    end
+)
+vim.keymap.set(
+    'n',
+    '<leader>do',
+    function()
+        require('dap').step_out()
+    end
+)
 
 -- vimtex
 vim.g.latex_view_general_viewer = 'zathura'
@@ -453,4 +599,4 @@ vim.g.vimtex_compiler_latexmk = {
     out_dir = './out',
 }
 vim.g.vimtex_indent_on_ampersands = 0
-vim.api.nvim_set_keymap('i', '<ctrl>-|', '<plug>(vimtex-delim-close)', {noremap = true}) -- set this to something I can't type, essentially just remove it
+vim.api.nvim_set_keymap('i', '<ctrl>-|', '<plug>(vimtex-delim-close)', { noremap = true }) -- set this to something I can't type, essentially just remove it
