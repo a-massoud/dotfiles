@@ -36,14 +36,14 @@ snippet template "Basic template" b
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
-\setmainfont{STIX Two Text}[Kerning=On,Ligatures={TeX,Common},
+\setmainfont{Times New Roman}[Kerning=On,Ligatures={TeX,Common,Discretionary},
 	Numbers=Proportional]
 \setsansfont{Source Sans Pro}[Kerning=On,Ligatures={TeX,Common},
-	Numbers=Proportional]
-\setmonofont{Source Code Pro}
-\setmathfont{STIX Two Math}
+	Numbers=Proportional,Scale=MatchLowercase]
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\setmathfont{Libertinus Math}[Scale=MatchLowercase]
 
-\usepackage[babel,protrusion=false]{microtype}
+\usepackage[babel,protrusion=true]{microtype}
 
 \usepackage{hyperref}
 
