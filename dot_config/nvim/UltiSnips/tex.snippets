@@ -22,6 +22,7 @@ snippet template "Basic template" b
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{chemmacros}
 \usepackage{chemfig}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 \usepackage{wrapfig}
 \usepackage{graphicx}
@@ -36,12 +37,12 @@ snippet template "Basic template" b
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}[Kerning=On,Ligatures={TeX,Common,Discretionary},
+\setmainfont{Times New Roman}[Kerning=On,Ligatures={TeX,Discretionary},
 	Numbers=Proportional]
 \setsansfont{Source Sans Pro}[Kerning=On,Ligatures={TeX,Common},
 	Numbers=Proportional,Scale=MatchLowercase]
 \setmonofont{Source Code Pro}[Scale=MatchLowercase]
-\setmathfont{Libertinus Math}[Scale=MatchLowercase]
+\setmathfont{STIX Two Math}[Scale=MatchLowercase]
 
 \usepackage[babel,protrusion=true]{microtype}
 
@@ -51,12 +52,6 @@ snippet template "Basic template" b
 \begin{document}
 $0
 \end{document}
-endsnippet
-
-snippet beg "begin{} / end{}" bA
-\\begin{$1}
-	$0
-\\end{$1}
 endsnippet
 
 snippet env "begin{} / end{}"
@@ -559,6 +554,10 @@ endsnippet
 
 snippet ZZ "Z" iA
 \mathbb{Z}
+endsnippet
+
+snippet CC "C" iA
+\mathbb{C}
 endsnippet
 
 snippet <! "normal" iA

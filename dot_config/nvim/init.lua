@@ -131,6 +131,10 @@ end
 -- vim.cmd('colorscheme NeoSolarized')
 vim.cmd('colorscheme solarized8')
 
+if (vim.fn.has('gui')) then
+    vim.opt.guifont = 'JetBrains Mono Nerd Font:h13'
+end
+
 -- treesitter
 require('nvim-treesitter.configs').setup {
     ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
