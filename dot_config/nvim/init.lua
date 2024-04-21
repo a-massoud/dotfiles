@@ -193,6 +193,12 @@ vim.api.nvim_set_keymap(
     '<cmd>Telescope file_browser<cr>',
     { noremap = true }
 )
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>fc',
+    '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>',
+    { noremap = true }
+)
 
 -- F2 to toggle search highlighting
 vim.api.nvim_set_keymap(
