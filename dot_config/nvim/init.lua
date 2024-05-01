@@ -44,7 +44,8 @@ require('lazy').setup({
     { 'mfussenegger/nvim-jdtls', dependencies = 'mfussenegger/nvim-dap' },
     'lervag/vimtex',
     'mattn/emmet-vim',
-    'tikhomirov/vim-glsl'
+    'tikhomirov/vim-glsl',
+    'norcalli/nvim-colorizer.lua'
 })
 
 -- comentary: use single-line comments for c/c++
@@ -130,6 +131,9 @@ end
 
 -- vim.cmd('colorscheme NeoSolarized')
 vim.cmd('colorscheme solarized8')
+
+-- colorizer
+require'colorizer'.setup()
 
 -- treesitter
 require('nvim-treesitter.configs').setup {
