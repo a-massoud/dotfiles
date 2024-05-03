@@ -27,8 +27,13 @@ local config = {
                         name = 'JavaSE-17',
                         path = '/usr/lib/jvm/java-17-openjdk/',
                         javadoc = 'https://docs.oracle.com/en/java/javase/17/docs/api',
-                        default = true
                     },
+                    {
+                        name = 'JavaSE-21',
+                        path = '/usr/lib/jvm/java-21-openjdk/',
+                        javadoc = 'https://docs.oracle.com/en/java/javase/21/docs/api',
+                        default = true
+                    }
                 }
             }
         },
