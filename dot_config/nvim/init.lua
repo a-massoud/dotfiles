@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.mapleader = ' '
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -22,6 +25,7 @@ require('lazy').setup({
     'farmergreg/vim-lastplace',
     'nvim-lualine/lualine.nvim',
     'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-tree.lua',
     'nvim-tree/nvim-web-devicons',
     { 'nvim-telescope/telescope.nvim',   branch = '0.1.x' },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
@@ -149,6 +153,15 @@ require('nvim-treesitter.configs').setup {
         enable = true
     }
 }
+
+-- nvim-tree
+require('nvim-tree').setup {}
+vim.api.nvim_set_keymap(
+    'n',
+    '<F4>',
+    '<cmd>NvimTreeToggle<cr>',
+    { noremap = true }
+)
 
 -- telescope
 local fb_actions = require "telescope".extensions.file_browser.actions
