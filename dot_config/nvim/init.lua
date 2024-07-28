@@ -49,7 +49,8 @@ require('lazy').setup({
     'lervag/vimtex',
     'mattn/emmet-vim',
     'tikhomirov/vim-glsl',
-    'norcalli/nvim-colorizer.lua'
+    'norcalli/nvim-colorizer.lua',
+    'barreiroleo/ltex_extra.nvim'
 })
 
 -- comentary: use single-line comments for c/c++
@@ -137,7 +138,7 @@ end
 vim.cmd('colorscheme solarized8')
 
 -- colorizer
-require'colorizer'.setup()
+require 'colorizer'.setup()
 
 -- treesitter
 require('nvim-treesitter.configs').setup {
@@ -397,6 +398,28 @@ lspconfig.lua_ls.setup {
 }
 lspconfig.texlab.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
+
+-- spellcheck
+lspconfig.ltex.setup {
+    settings = {
+        ltex = {
+            language = 'en-US',
+            dictionary = {
+                ['en-US'] = { 'Massoud' },
+                es = { 'Massoud' },
+                fr = { 'Massoud' }
+            },
+            disabledRules = { fr = { 'FRENCH_WHITESPACE' } }
+        }
+    },
+    on_attach = function(client, bufnr)
+        require('ltex_extra').setup {
+            load_langs = { 'en-US', 'es', 'fr', 'ar' },
+            path = vim.fn.expand('~') .. '/.local/share/ltex'
+        }
+    end,
+    capabilities = capabilities
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
