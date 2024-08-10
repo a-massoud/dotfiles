@@ -370,7 +370,10 @@ lspconfig.rust_analyzer.setup {
     },
     capabilities = capabilities
 }
-lspconfig.clangd.setup { capabilities = capabilities }
+lspconfig.clangd.setup {
+    cmd = { 'clangd', '--background-index', '--header-insertion=never'},
+    capabilities = capabilities
+}
 vim.api.nvim_set_keymap('n', 'gh', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true })
 lspconfig.cmake.setup { capabilities = capabilities }
 lspconfig.lua_ls.setup {
