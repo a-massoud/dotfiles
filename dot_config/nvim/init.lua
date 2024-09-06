@@ -356,7 +356,7 @@ vim.opt.signcolumn = 'yes'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup { capabilities = capabilities }
-lspconfig.tsserver.setup { capabilities = capabilities }
+lspconfig.ts_ls.setup { capabilities = capabilities }
 lspconfig.jsonls.setup { capabilities = capabilities }
 lspconfig.rust_analyzer.setup {
     settings = {
