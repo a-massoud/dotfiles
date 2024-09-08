@@ -21,9 +21,11 @@ snippet template "Basic template" b
 \usepackage[letterpaper,DIV=calc]{typearea}
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
 \usepackage{chemmacros}
 \usepackage{chemfig}
-\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\sisetup{retain-explicit-decimal-marker=true,separate-uncertainty=true}
 
 \usepackage{wrapfig}
 \usepackage{graphicx}
