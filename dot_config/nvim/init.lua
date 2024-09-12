@@ -35,6 +35,7 @@ require('lazy').setup({
     'vim-scripts/utl.vim',
     'SirVer/ultisnips',
     'neovim/nvim-lspconfig',
+    'stevearc/conform.nvim',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -371,7 +372,7 @@ lspconfig.rust_analyzer.setup {
     capabilities = capabilities
 }
 lspconfig.clangd.setup {
-    cmd = { 'clangd', '--background-index', '--header-insertion=never'},
+    cmd = { 'clangd', '--background-index', '--header-insertion=never' },
     capabilities = capabilities
 }
 vim.api.nvim_set_keymap('n', 'gh', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true })
@@ -457,9 +458,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<space>fmt', function()
-            vim.lsp.buf.format { async = true }
-        end, opts)
+        -- vim.keymap.set('n', '<space>fmt', function()
+        --     vim.lsp.buf.format { async = true }
+        -- end, opts)
     end,
 })
 
@@ -503,6 +504,25 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
     }
 )
+
+-- conform (formatters)
+require('conform').setup({
+    formatters_by_ft = {
+        lua = { 'stylua' },
+        python = { 'isort', 'black' },
+        rust = { 'rustfmt', lsp_format = 'fallback' },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true, lsp_format = 'fallback' },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true, lsp_format = 'fallback' },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
+        java = { lsp_format = 'prefer' },
+        cmake = { 'cmake_format' }
+    }
+})
+
+vim.keymap.set('n', '<space>fmt', function()
+    require('conform').format({bufnr = 0})
+end)
 
 -- python venvs
 if vim.fn.exists("$VIRTUAL_ENV") == 1 then
