@@ -516,7 +516,8 @@ require('conform').setup({
         c = { 'clang-format' },
         cpp = { 'clang-format' },
         java = { lsp_format = 'prefer' },
-        cmake = { 'cmake_format' }
+        cmake = { 'cmake_format' },
+        html = { 'djlint' }
     }
 })
 
