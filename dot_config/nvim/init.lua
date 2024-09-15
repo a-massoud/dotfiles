@@ -47,7 +47,7 @@ require('lazy').setup({
     'rcarriga/nvim-dap-ui',
     'theHamsta/nvim-dap-virtual-text',
     { 'mfussenegger/nvim-jdtls', dependencies = 'mfussenegger/nvim-dap' },
-    'lervag/vimtex',
+    { 'lervag/vimtex', lazy = false },
     'mattn/emmet-vim',
     'tikhomirov/vim-glsl',
     'norcalli/nvim-colorizer.lua',
