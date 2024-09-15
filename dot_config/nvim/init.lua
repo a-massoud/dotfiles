@@ -104,7 +104,7 @@ vim.g.bufferline_echo = 0
 vim.opt.showmode = false
 local lualine = require('lualine')
 lualine.setup {
-    options = { theme = 'solarized_dark' }
+    options = { theme = 'solarized_light' }
 }
 -- vim.g.airline_theme = 'onedark'
 -- vim.g.airline_powerline_fonts = 1
@@ -122,7 +122,7 @@ lualine.setup {
 
 -- syntax
 vim.opt.cursorline = true
-vim.opt.bg = 'dark'
+vim.opt.bg = 'light'
 vim.env['NVIM_TUI_ENABLE_TRUE_COLOR'] = '1'
 if (vim.fn.has('termguicolors')) then
     vim.opt.termguicolors = true
