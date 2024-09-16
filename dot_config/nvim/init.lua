@@ -248,13 +248,13 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
     '',
-    '<F3>',
+    '<F4>',
     '<cmd>set fo+=t<CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'i',
-    '<F3>',
+    '<F4>',
     '<Esc><cmd>set fo+=t<CR>a',
     { noremap = true }
 )
