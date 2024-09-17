@@ -233,32 +233,6 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- F3 & F4 to turn off and on, respectively, normal text wrapping
-vim.api.nvim_set_keymap(
-    '',
-    '<F3>',
-    '<cmd>set fo-=t<CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'i',
-    '<F3>',
-    '<Esc><cmd>set fo-=t<CR>a',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    '',
-    '<F4>',
-    '<cmd>set fo+=t<CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'i',
-    '<F4>',
-    '<Esc><cmd>set fo+=t<CR>a',
-    { noremap = true }
-)
-
 -- F5 to switch rl
 vim.api.nvim_set_keymap(
     '',
