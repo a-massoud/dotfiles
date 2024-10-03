@@ -1,0 +1,3 @@
+R_HOME_USER = ${HOME}/.local/share/R
+R_LIBS_USER = ~/.local/libs/R
+R_HISTFILE = ${R_HOME_USER}/histfile.Rhistory

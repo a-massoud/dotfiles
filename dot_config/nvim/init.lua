@@ -51,7 +51,8 @@ require('lazy').setup({
     'mattn/emmet-vim',
     'tikhomirov/vim-glsl',
     'norcalli/nvim-colorizer.lua',
-    'barreiroleo/ltex_extra.nvim'
+    'barreiroleo/ltex_extra.nvim',
+    { 'R-nvim/R.nvim', lazy = false }
 })
 
 -- comentary: use single-line comments for c/c++
