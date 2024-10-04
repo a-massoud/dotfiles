@@ -52,7 +52,8 @@ require('lazy').setup({
     'tikhomirov/vim-glsl',
     'norcalli/nvim-colorizer.lua',
     'barreiroleo/ltex_extra.nvim',
-    { 'R-nvim/R.nvim', lazy = false }
+    { 'R-nvim/R.nvim', lazy = false },
+    'R-nvim/cmp-r'
 })
 
 -- comentary: use single-line comments for c/c++
@@ -294,6 +295,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'ultisnips' }, -- For ultisnips users.
+        { name = 'cmp_r' }
     }, {
         { name = 'buffer' },
     })
@@ -646,3 +648,6 @@ vim.g.vimtex_compiler_latexmk = {
 }
 vim.g.vimtex_indent_on_ampersands = 0
 vim.api.nvim_set_keymap('i', '<ctrl>-|', '<plug>(vimtex-delim-close)', { noremap = true }) -- set this to something I can't type, essentially just remove it
+
+-- R
+require('cmp_r').setup{}
