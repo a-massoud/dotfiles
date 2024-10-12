@@ -159,7 +159,11 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- nvim-tree
-require('nvim-tree').setup {}
+require('nvim-tree').setup {
+    renderer = {
+        group_empty = true
+    }
+}
 vim.api.nvim_set_keymap(
     'n',
     '<F4>',
