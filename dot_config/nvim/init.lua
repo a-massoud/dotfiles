@@ -74,6 +74,7 @@ vim.opt.autoindent = true
 vim.opt.formatoptions = 'croqnj'
 vim.opt.joinspaces = false
 vim.opt.textwidth = 80
+vim.opt.scrolloff = 5
 vim.opt.title = true
 vim.opt.titlelen = 0
 vim.opt.fixeol = false
