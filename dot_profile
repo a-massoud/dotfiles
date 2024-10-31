@@ -7,4 +7,8 @@ export TERMINAL=/usr/bin/kitty
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland
 export MAKEFLAGS=-j$(($(grep -c "^processor" /proc/cpuinfo)))
+if [[ $PATH != *"$HOME/.local/bin"* ]]
+then
+    export PATH=$HOME/.local/bin:$PATH
+fi
 source ~/.profile_private
