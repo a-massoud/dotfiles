@@ -21,6 +21,7 @@ require("lazy").setup({
 	"tpope/vim-commentary",
 	"tpope/vim-repeat",
 	"tpope/vim-speeddating",
+	"tpope/vim-unimpaired",
 	"tpope/vim-fugitive",
 	"farmergreg/vim-lastplace",
 	"nvim-lualine/lualine.nvim",
@@ -30,7 +31,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"nvim-telescope/telescope-file-browser.nvim",
-	"lifepillar/vim-solarized8",
+	{ "shaunsingh/nord.nvim", lazy = false, priority = 1000 },
 	"dhruvasagar/vim-table-mode",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
@@ -103,12 +104,34 @@ vim.opt.wildmenu = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- syntax
+vim.opt.cursorline = true
+vim.opt.bg = "light"
+vim.env["NVIM_TUI_ENABLE_TRUE_COLOR"] = "1"
+if vim.fn.has("termguicolors") then
+	vim.opt.termguicolors = true
+end
+-- vim hardcodes background color erase even if the terminfo file does
+-- not contain bce (not to mention that libvte based terminals
+-- incorrectly contain bce in their terminfo files). This causes
+-- incorrect background rendering when using a color theme with a
+-- background color.
+vim.g.nord_contrast = true
+vim.g.nord_borders = true
+vim.g.nord_disable_background = false
+vim.g.nord_cursorline_transparent = false
+vim.g.nord_italic = true
+vim.g.nord_uniform_diff_background = false
+vim.g.nord_bold = true
+vim.cmd("colorscheme nord")
+
 -- lualine
 vim.g.bufferline_echo = 0
 vim.opt.showmode = false
 local lualine = require("lualine")
 lualine.setup({
-	options = { theme = "solarized_light" },
+	options = { theme = "auto" },
+	extensions = { "quickfix", "fugitive", "lazy", "man", "nerdtree", "nvim-dap-ui", "nvim-tree" },
 })
 -- vim.g.airline_theme = 'onedark'
 -- vim.g.airline_powerline_fonts = 1
@@ -123,24 +146,6 @@ lualine.setup({
 -- vim.g['airline#extensions#tabline#show_tab_nr'] = 0
 -- vim.g['airline#extensions#tabline#show_tab_type'] = 0
 -- vim.g['airline#extensions#tabline#tab_min_count'] = 2
-
--- syntax
-vim.opt.cursorline = true
-vim.opt.bg = "light"
-vim.env["NVIM_TUI_ENABLE_TRUE_COLOR"] = "1"
-if vim.fn.has("termguicolors") then
-	vim.opt.termguicolors = true
-end
--- vim.g.neosolarized_contrast = 'normal'
--- vim.g.neosolarized_visibility = 'normal'
--- vim.g.neosolarized_vertSplitBgTrans = 1
--- vim.g.neosolarized_bold = 1
--- vim.g.neosolarized_underline = 1
--- vim.g.neosolarized_italic = 1
--- vim.g.neosolarized_termBoldAsBright = 1
-
--- vim.cmd('colorscheme NeoSolarized')
-vim.cmd("colorscheme solarized8")
 
 -- colorizer
 require("colorizer").setup()
