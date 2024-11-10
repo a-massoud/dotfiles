@@ -31,7 +31,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"nvim-telescope/telescope-file-browser.nvim",
-	{ "shaunsingh/nord.nvim", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim", name = "catppucccin", lazy = false, priority = 1000 },
 	"dhruvasagar/vim-table-mode",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
@@ -106,32 +106,55 @@ vim.opt.relativenumber = true
 
 -- syntax
 vim.opt.cursorline = true
-vim.opt.bg = "light"
+vim.opt.bg = "dark"
 vim.env["NVIM_TUI_ENABLE_TRUE_COLOR"] = "1"
 if vim.fn.has("termguicolors") then
 	vim.opt.termguicolors = true
 end
--- vim hardcodes background color erase even if the terminfo file does
--- not contain bce (not to mention that libvte based terminals
--- incorrectly contain bce in their terminfo files). This causes
--- incorrect background rendering when using a color theme with a
--- background color.
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
-vim.g.nord_disable_background = false
-vim.g.nord_cursorline_transparent = false
-vim.g.nord_italic = true
-vim.g.nord_uniform_diff_background = false
-vim.g.nord_bold = true
-vim.cmd("colorscheme nord")
+require("catppuccin").setup({
+	flavour = "auto",
+	background = {
+		light = "latte",
+		dark = "mocha",
+	},
+	integrations = {
+		cmp = true,
+		dap = true,
+		dap_ui = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+				ok = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+				ok = { "underline" },
+			},
+			inlay_hints = {
+				background = true,
+			},
+		},
+		nvimtree = true,
+		treesitter = true,
+		telescope = { enabled = true },
+	},
+})
+vim.cmd("colorscheme catppuccin")
 
 -- lualine
 vim.g.bufferline_echo = 0
 vim.opt.showmode = false
 local lualine = require("lualine")
 lualine.setup({
-	options = { theme = "auto" },
-	extensions = { "quickfix", "fugitive", "lazy", "man", "nerdtree", "nvim-dap-ui", "nvim-tree" },
+	options = { theme = "catppuccin" },
+	extensions = { "quickfix", "fugitive", "lazy", "man", "nvim-dap-ui", "nvim-tree" },
 })
 -- vim.g.airline_theme = 'onedark'
 -- vim.g.airline_powerline_fonts = 1
