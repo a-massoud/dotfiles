@@ -5,7 +5,6 @@ export VISUAL=/usr/bin/nvim
 export BROWSER=/usr/bin/firefox
 export TERMINAL=/usr/bin/kitty
 export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
 export MAKEFLAGS=-j$(($(grep -c "^processor" /proc/cpuinfo)))
 if [[ $PATH != *"$HOME/.local/bin"* ]]
 then
