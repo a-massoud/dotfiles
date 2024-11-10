@@ -411,7 +411,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|tan|cot|csc|ln|log|exp|star|perp)' "ln" rwA
+snippet '(?<!\\)(sin|cos|tan|cot|csc|ln|log|exp|star|perp|sqrt)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -587,25 +587,25 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "bar" "bar" riA
+snippet "bar" "bar" ri
 \overline{$1}$0
 endsnippet
 
 priority 100
 context "math()"
-snippet "([a-zA-Z])bar" "bar" riA
+snippet "([a-zA-Z])bar" "bar" ri
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
-snippet "hat" "hat" riA
+snippet "hat" "hat" ri
 \hat{$1}$0
 endsnippet
 
 priority 100
 context "math()"
-snippet "([a-zA-Z])hat" "hat" riA
+snippet "([a-zA-Z])hat" "hat" ri
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -683,6 +683,10 @@ endsnippet
 
 snippet subsubsec* "subsubsection*" b
 \subsubsection*{$1}$0
+endsnippet
+
+snippet paragraph "paragraph" b
+\paragraph{$1}$0
 endsnippet
 
 snippet em "emph"
