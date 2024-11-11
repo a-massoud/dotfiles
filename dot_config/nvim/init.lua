@@ -56,6 +56,9 @@ require("lazy").setup({
 	{ "R-nvim/R.nvim", lazy = false },
 	"R-nvim/cmp-r",
 	"hkupty/iron.nvim",
+	"stevearc/dressing.nvim",
+	"rcarriga/nvim-notify",
+	"stevearc/overseer.nvim",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -155,6 +158,14 @@ local lualine = require("lualine")
 lualine.setup({
 	options = { theme = "catppuccin" },
 	extensions = { "quickfix", "fugitive", "lazy", "man", "nvim-dap-ui", "nvim-tree" },
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { "filename" },
+		lualine_x = { "overseer", "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
 })
 -- vim.g.airline_theme = 'onedark'
 -- vim.g.airline_powerline_fonts = 1
@@ -201,7 +212,6 @@ local fb_actions = require("telescope").extensions.file_browser.actions
 require("telescope").setup({
 	extensions = {
 		file_browser = {
-			hijack_netrw = true,
 			respect_gitignore = false,
 			mappings = {
 				["i"] = {
@@ -610,3 +620,6 @@ vim.keymap.set("n", "<space>rs", "<cmd>IronRepl<cr>")
 vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>")
 vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
+
+-- overseer
+require("overseer").setup()
