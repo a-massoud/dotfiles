@@ -59,6 +59,7 @@ require("lazy").setup({
 	"stevearc/dressing.nvim",
 	"rcarriga/nvim-notify",
 	"stevearc/overseer.nvim",
+	"Civitasv/cmake-tools.nvim",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -623,3 +624,16 @@ vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
 -- overseer
 require("overseer").setup()
+
+-- cmake-tools
+local osys = require("cmake-tools.osys")
+require("cmake-tools").setup({
+	cmake_build_directory = function()
+		if osys.iswin32 then
+			return "build\\${variant:buildType}"
+		end
+		return "build/${variant:buildType}"
+	end,
+	cmake_executor = { name = "overseer" },
+	cmake_runner = { name = "overseer" },
+})
