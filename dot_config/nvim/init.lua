@@ -622,6 +622,8 @@ vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>")
 vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
+vim.notify = require("notify")
+
 -- overseer
 require("overseer").setup()
 
