@@ -26,7 +26,6 @@ require("lazy").setup({
 	"farmergreg/vim-lastplace",
 	"nvim-lualine/lualine.nvim",
 	"nvim-lua/plenary.nvim",
-	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -159,7 +158,7 @@ vim.opt.showmode = false
 local lualine = require("lualine")
 lualine.setup({
 	options = { theme = "catppuccin" },
-	extensions = { "quickfix", "fugitive", "lazy", "man", "nvim-dap-ui", "nvim-tree" },
+	extensions = { "quickfix", "fugitive", "lazy", "man", "nvim-dap-ui" },
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
@@ -201,20 +200,13 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
--- nvim-tree
-require("nvim-tree").setup({
-	renderer = {
-		group_empty = true,
-	},
-})
-vim.api.nvim_set_keymap("n", "<F4>", "<cmd>NvimTreeToggle<cr>", { noremap = true })
-
 -- telescope
 local fb_actions = require("telescope").extensions.file_browser.actions
 require("telescope").setup({
 	extensions = {
 		file_browser = {
 			respect_gitignore = false,
+            hijack_netrw = true,
 			mappings = {
 				["i"] = {
 					["<A-CR>"] = fb_actions.create_from_prompt,
