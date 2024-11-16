@@ -59,7 +59,6 @@ require("lazy").setup({
 	{ "rcarriga/nvim-notify", lazy = false },
 	{ "folke/noice.nvim", lazy = false },
 	"stevearc/overseer.nvim",
-	"Civitasv/cmake-tools.nvim",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -206,7 +205,7 @@ require("telescope").setup({
 	extensions = {
 		file_browser = {
 			respect_gitignore = false,
-            hijack_netrw = true,
+			hijack_netrw = true,
 			mappings = {
 				["i"] = {
 					["<A-CR>"] = fb_actions.create_from_prompt,
@@ -637,7 +636,7 @@ require("noice").setup({
 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
-    -- Disable ltex spam
+	-- Disable ltex spam
 	routes = {
 		{
 			filter = {
@@ -655,16 +654,3 @@ require("noice").setup({
 
 -- overseer
 require("overseer").setup()
-
--- cmake-tools
-local osys = require("cmake-tools.osys")
-require("cmake-tools").setup({
-	cmake_build_directory = function()
-		if osys.iswin32 then
-			return "build\\${variant:buildType}"
-		end
-		return "build/${variant:buildType}"
-	end,
-	cmake_executor = { name = "overseer" },
-	cmake_runner = { name = "overseer" },
-})
