@@ -32,6 +32,7 @@ require("lazy").setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	{ "catppuccin/nvim", name = "catppucccin", lazy = false, priority = 1000 },
 	"dhruvasagar/vim-table-mode",
+    "junegunn/vim-easy-align",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
 	"neovim/nvim-lspconfig",
@@ -239,6 +240,10 @@ vim.api.nvim_set_keymap("i", "<F5>", "<Esc><cmd>set rl!<CR>a", { noremap = true 
 -- F5 to switch arab
 vim.api.nvim_set_keymap("", "<F6>", "<cmd>set arab!<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<F6>", "<Esc><cmd>set arab!<CR>a", { noremap = true })
+
+-- vim-easy-align
+vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", { noremap = true })
+vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", { noremap = true })
 
 -- ultisnips
 vim.g.UltiSnipsExpandTrigger = "<tab>"
