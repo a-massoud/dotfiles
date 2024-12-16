@@ -32,7 +32,7 @@ require("lazy").setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	{ "catppuccin/nvim", name = "catppucccin", lazy = false, priority = 1000 },
 	"dhruvasagar/vim-table-mode",
-    "junegunn/vim-easy-align",
+	"junegunn/vim-easy-align",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
 	"neovim/nvim-lspconfig",
@@ -57,9 +57,11 @@ require("lazy").setup({
 	"R-nvim/cmp-r",
 	"hkupty/iron.nvim",
 	-- "stevearc/dressing.nvim",
-	-- { "rcarriga/nvim-notify", lazy = false },
+	{ "rcarriga/nvim-notify", lazy = false },
 	-- { "folke/noice.nvim", lazy = false },
 	"stevearc/overseer.nvim",
+	"Civitasv/cmake-tools.nvim",
+	{ "mrcjkb/rustaceanvim", lazy = false },
 })
 
 -- comentary: use single-line comments for c/c++
@@ -318,18 +320,18 @@ local lspconfig = require("lspconfig")
 lspconfig.pyright.setup({ capabilities = capabilities })
 lspconfig.ts_ls.setup({ capabilities = capabilities })
 lspconfig.jsonls.setup({ capabilities = capabilities })
-lspconfig.rust_analyzer.setup({
-	settings = {
-		["rust-analyzer"] = {
-			imports = {
-				granularity = {
-					group = "module",
-				},
-			},
-		},
-	},
-	capabilities = capabilities,
-})
+-- lspconfig.rust_analyzer.setup({
+-- 	settings = {
+-- 		["rust-analyzer"] = {
+-- 			imports = {
+-- 				granularity = {
+-- 					group = "module",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- 	capabilities = capabilities,
+-- })
 lspconfig.clangd.setup({
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
 	capabilities = capabilities,
@@ -620,7 +622,7 @@ vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
 -- notify & noice
--- vim.notify = require("notify")
+vim.notify = require("notify")
 -- require("noice").setup({
 -- 	lsp = {
 -- 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -656,3 +658,13 @@ vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
 -- overseer
 require("overseer").setup()
+
+-- cmake-tools
+require("cmake-tools").setup({
+	cmake_build_directory = function()
+		if require("cmake-tools.osys").iswin32 then
+			return "build\\${variant:buildType}"
+		end
+		return "build/${variant:buildType}"
+	end,
+})
