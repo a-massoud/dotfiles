@@ -458,6 +458,7 @@ require("conform").setup({
 		java = { lsp_format = "prefer" },
 		cmake = { "cmake_format" },
 		html = { "djlint" },
+		toml = { "taplo" },
 	},
 })
 
