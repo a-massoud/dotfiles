@@ -124,6 +124,7 @@ require("catppuccin").setup({
 		dark = "mocha",
 	},
 	integrations = {
+        notify = true,
 		cmp = true,
 		dap = true,
 		dap_ui = true,
