@@ -52,7 +52,7 @@ require("lazy").setup({
 	"mattn/emmet-vim",
 	"tikhomirov/vim-glsl",
 	"norcalli/nvim-colorizer.lua",
-	"barreiroleo/ltex_extra.nvim",
+	-- "barreiroleo/ltex_extra.nvim",
 	{ "R-nvim/R.nvim", lazy = false },
 	"R-nvim/cmp-r",
 	"hkupty/iron.nvim",
@@ -365,30 +365,30 @@ lspconfig.lua_ls.setup({
 lspconfig.texlab.setup({ capabilities = capabilities })
 lspconfig.html.setup({ capabilities = capabilities })
 
--- spellcheck
-lspconfig.ltex.setup({
-	settings = {
-		ltex = {
-			language = "en-US",
-			dictionary = {
-				["en-US"] = { "Massoud" },
-				es = { "Massoud" },
-				fr = { "Massoud" },
-			},
-			disabledRules = { fr = { "FRENCH_WHITESPACE" } },
-			["ltex-ls"] = {
-				logLevel = { "severe" },
-			},
-		},
-	},
-	on_attach = function(client, bufnr)
-		require("ltex_extra").setup({
-			load_langs = { "en-US", "es", "fr", "ar" },
-			path = vim.fn.expand("~") .. "/.local/share/ltex",
-		})
-	end,
-	capabilities = capabilities,
-})
+-- -- spellcheck
+-- lspconfig.ltex.setup({
+-- 	settings = {
+-- 		ltex = {
+-- 			language = "en-US",
+-- 			dictionary = {
+-- 				["en-US"] = { "Massoud" },
+-- 				es = { "Massoud" },
+-- 				fr = { "Massoud" },
+-- 			},
+-- 			disabledRules = { fr = { "FRENCH_WHITESPACE" } },
+-- 			["ltex-ls"] = {
+-- 				logLevel = { "severe" },
+-- 			},
+-- 		},
+-- 	},
+-- 	on_attach = function(client, bufnr)
+-- 		require("ltex_extra").setup({
+-- 			load_langs = { "en-US", "es", "fr", "ar" },
+-- 			path = vim.fn.expand("~") .. "/.local/share/ltex",
+-- 		})
+-- 	end,
+-- 	capabilities = capabilities,
+-- })
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
