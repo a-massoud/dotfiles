@@ -124,7 +124,7 @@ require("catppuccin").setup({
 		dark = "mocha",
 	},
 	integrations = {
-        notify = true,
+		notify = true,
 		cmp = true,
 		dap = true,
 		dap_ui = true,
@@ -334,6 +334,12 @@ lspconfig.jsonls.setup({ capabilities = capabilities })
 -- 	capabilities = capabilities,
 -- })
 lspconfig.clangd.setup({
+	on_new_config = function(new_config, new_cwd)
+		local status, cmake = pcall(require, "cmake-tools")
+		if status then
+			cmake.clangd_on_new_config(new_config)
+		end
+	end,
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
 	capabilities = capabilities,
 })
@@ -663,6 +669,8 @@ require("overseer").setup()
 
 -- cmake-tools
 require("cmake-tools").setup({
+	cmake_soft_link_compile_commands = false,
+	cmake_compile_commands_from_lsp = true,
 	cmake_build_directory = function()
 		if require("cmake-tools.osys").iswin32 then
 			return "build\\${variant:buildType}"
