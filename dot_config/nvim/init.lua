@@ -321,6 +321,7 @@ local lspconfig = require("lspconfig")
 lspconfig.pyright.setup({ capabilities = capabilities })
 lspconfig.ts_ls.setup({ capabilities = capabilities })
 lspconfig.jsonls.setup({ capabilities = capabilities })
+lspconfig.gopls.setup({ capabilities = capabilities })
 -- lspconfig.rust_analyzer.setup({
 -- 	settings = {
 -- 		["rust-analyzer"] = {
@@ -459,13 +460,16 @@ require("conform").setup({
 		python = { "isort", "black" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		javascript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+		javascriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		typescript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+		typescriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		java = { lsp_format = "prefer" },
 		cmake = { "cmake_format" },
 		html = { "djlint" },
 		toml = { "taplo" },
+        go = { "gofmt", lsp_format = "fallback" }
 	},
 })
 
