@@ -62,6 +62,7 @@ require("lazy").setup({
 	"stevearc/overseer.nvim",
 	"Civitasv/cmake-tools.nvim",
 	{ "mrcjkb/rustaceanvim", lazy = false },
+	"leoluz/nvim-dap-go",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -371,6 +372,7 @@ lspconfig.lua_ls.setup({
 })
 lspconfig.texlab.setup({ capabilities = capabilities })
 lspconfig.html.setup({ capabilities = capabilities })
+lspconfig.svelte.setup({ capabilities = capabilities })
 
 -- -- spellcheck
 -- lspconfig.ltex.setup({
@@ -469,7 +471,7 @@ require("conform").setup({
 		cmake = { "cmake_format" },
 		html = { "djlint" },
 		toml = { "taplo" },
-        go = { "gofmt", lsp_format = "fallback" }
+		go = { "gofmt", lsp_format = "fallback" },
 	},
 })
 
@@ -498,6 +500,7 @@ dap.adapters.codelldb = {
 dap.adapters.cpp = dap.adapters.codelldb
 dap.adapters.c = dap.adapters.codelldb
 dap.adapters.rust = dap.adapters.codelldb
+require("dap-go").setup()
 
 dap.adapters.python = {
 	type = "executable",
