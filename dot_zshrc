@@ -30,11 +30,7 @@ setopt histignorespace
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-alias dog='pygmentize -g -O style=colorful'
-alias whitenoise='play -n synth brownnoise synth pinknoise mix synth sine amod \
-    0.3 10'
 alias ls='ls --color=auto -F'
-alias calc='ipython -i ~/.mathenv'
 
 # emacs-nox
 alias emacs="emacs -nw"
