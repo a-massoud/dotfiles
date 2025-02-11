@@ -30,7 +30,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"nvim-telescope/telescope-file-browser.nvim",
-	{ "catppuccin/nvim", name = "catppucccin", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
 	"dhruvasagar/vim-table-mode",
 	"junegunn/vim-easy-align",
 	"vim-scripts/utl.vim",
@@ -56,13 +56,14 @@ require("lazy").setup({
 	{ "R-nvim/R.nvim", lazy = false },
 	"R-nvim/cmp-r",
 	"hkupty/iron.nvim",
-	-- "stevearc/dressing.nvim",
+	"stevearc/dressing.nvim",
 	{ "rcarriga/nvim-notify", lazy = false },
-	-- { "folke/noice.nvim", lazy = false },
+	{ "folke/noice.nvim", lazy = false },
 	"stevearc/overseer.nvim",
 	"Civitasv/cmake-tools.nvim",
 	{ "mrcjkb/rustaceanvim", lazy = false },
 	"leoluz/nvim-dap-go",
+	"akinsho/toggleterm.nvim",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -152,6 +153,7 @@ require("catppuccin").setup({
 		nvimtree = true,
 		treesitter = true,
 		telescope = { enabled = true },
+		noice = true,
 	},
 })
 vim.cmd("colorscheme catppuccin")
@@ -638,38 +640,38 @@ vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
 -- notify & noice
 vim.notify = require("notify")
--- require("noice").setup({
--- 	lsp = {
--- 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
--- 		override = {
--- 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
--- 			["vim.lsp.util.stylize_markdown"] = true,
--- 			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
--- 		},
--- 	},
--- 	-- you can enable a preset for easier configuration
--- 	presets = {
--- 		bottom_search = true, -- use a classic bottom cmdline for search
--- 		command_palette = true, -- position the cmdline and popupmenu together
--- 		long_message_to_split = true, -- long messages will be sent to a split
--- 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
--- 		lsp_doc_border = false, -- add a border to hover docs and signature help
--- 	},
--- 	-- Disable ltex spam
--- 	routes = {
--- 		{
--- 			filter = {
--- 				event = "lsp",
--- 				kind = "progress",
--- 				cond = function(message)
--- 					local client = vim.tbl_get(message.opts, "progress", "client")
--- 					return client == "ltex"
--- 				end,
--- 			},
--- 			opts = { skip = true },
--- 		},
--- 	},
--- })
+require("noice").setup({
+	lsp = {
+		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+		override = {
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			["vim.lsp.util.stylize_markdown"] = true,
+			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+		},
+	},
+	-- you can enable a preset for easier configuration
+	presets = {
+		bottom_search = true, -- use a classic bottom cmdline for search
+		command_palette = true, -- position the cmdline and popupmenu together
+		long_message_to_split = true, -- long messages will be sent to a split
+		inc_rename = false, -- enables an input dialog for inc-rename.nvim
+		lsp_doc_border = false, -- add a border to hover docs and signature help
+	},
+	-- Disable ltex spam
+	routes = {
+		{
+			filter = {
+				event = "lsp",
+				kind = "progress",
+				cond = function(message)
+					local client = vim.tbl_get(message.opts, "progress", "client")
+					return client == "ltex"
+				end,
+			},
+			opts = { skip = true },
+		},
+	},
+})
 
 -- overseer
 require("overseer").setup()
@@ -684,4 +686,9 @@ require("cmake-tools").setup({
 		end
 		return "build/${variant:buildType}"
 	end,
+})
+
+-- toggleterm
+require("toggleterm").setup({
+	open_mapping = [[<c-\>]],
 })
