@@ -109,8 +109,8 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 0
 vim.opt.showmode = true
 vim.opt.wildmenu = true
-vim.opt.number = false
-vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = false
 
 -- syntax
 vim.opt.cursorline = true
