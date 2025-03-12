@@ -690,5 +690,8 @@ require("cmake-tools").setup({
 
 -- toggleterm
 require("toggleterm").setup({
-	open_mapping = [[<c-\>]],
+	open_mapping = [[<leader><c-\>]],
+	insert_mappings = false,
+	terminal_mappings = false,
+	direction = "float",
 })
