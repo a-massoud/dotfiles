@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"tpope/vim-surround",
+	"echasnovski/mini.pairs",
 	"tpope/vim-commentary",
 	"tpope/vim-repeat",
 	"tpope/vim-speeddating",
@@ -73,6 +74,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt.commentstring = "//%s"
 	end,
 })
+
+-- pairs
+require("mini.pairs").setup()
 
 -- basic editing options
 vim.opt.tabstop = 4
