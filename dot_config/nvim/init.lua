@@ -682,14 +682,46 @@ require("overseer").setup()
 
 -- cmake-tools
 require("cmake-tools").setup({
-	cmake_soft_link_compile_commands = false,
-	cmake_compile_commands_from_lsp = true,
+	cmake_compile_commands_options = {
+		action = "lsp",
+	},
 	cmake_build_directory = function()
 		if require("cmake-tools.osys").iswin32 then
 			return "build\\${variant:buildType}"
 		end
 		return "build/${variant:buildType}"
 	end,
+	cmake_kits_path = "~/.cmake_kits.json",
+	cmake_executor = {
+		name = "overseer",
+		opts = {
+			new_task_opts = {
+				strategy = {
+					"toggleterm",
+					direction = "horizontal",
+					auto_scroll = true,
+					quit_on_exit = "success",
+				},
+				on_new_task = function(task)
+					require("overseer").open({ enter = false, direction = "right" })
+				end,
+			},
+		},
+	},
+	cmake_runner = {
+		name = "overseer",
+		opts = {
+			new_task_opts = {
+				strategy = {
+					"toggleterm",
+					direction = "horizontal",
+					auto_scroll = true,
+					quit_on_exit = "success",
+				},
+			},
+			on_new_task = function(task) end,
+		},
+	},
 })
 
 -- toggleterm
