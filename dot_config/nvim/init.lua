@@ -65,6 +65,7 @@ require("lazy").setup({
 	{ "mrcjkb/rustaceanvim", lazy = false },
 	"leoluz/nvim-dap-go",
 	"akinsho/toggleterm.nvim",
+	"mfussenegger/nvim-dap-python",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -507,22 +508,7 @@ dap.adapters.cpp = dap.adapters.codelldb
 dap.adapters.c = dap.adapters.codelldb
 dap.adapters.rust = dap.adapters.codelldb
 require("dap-go").setup()
-
-dap.adapters.python = {
-	type = "executable",
-	command = "/usr/bin/python",
-	args = { "-m", "debugpy.adapter" },
-}
-
-dap.configurations.python = {
-	{
-		type = "python",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		pythonPath = vim.g.python3_host_prog,
-	},
-}
+require("dap-python").setup("python3")
 dap.configurations.cpp = {
 	{
 		name = "Launch Codelldb",
@@ -683,7 +669,7 @@ require("toggleterm").setup({
 	insert_mappings = false,
 	terminal_mappings = false,
 	direction = "float",
-  close_on_exit = false,
+	close_on_exit = false,
 })
 
 -- overseer
