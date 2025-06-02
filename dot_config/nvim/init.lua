@@ -678,7 +678,7 @@ local overseer_strat = {
 	use_shell = true,
 	direction = "float",
 	close_on_exit = false,
-	quit_on_exit = "success",
+	quit_on_exit = "never",
 }
 require("overseer").setup({
 	strategy = overseer_strat,
