@@ -58,7 +58,7 @@ require("lazy").setup({
 	"R-nvim/cmp-r",
 	"hkupty/iron.nvim",
 	"stevearc/dressing.nvim",
-	{ "rcarriga/nvim-notify", lazy = false },
+	{ "rcarriga/nvim-notify", lazy = false, dependencies = { "MunifTanjim/nui.nvim", "folke/noice.nvim" } },
 	{ "folke/noice.nvim", lazy = false },
 	"stevearc/overseer.nvim",
 	"Civitasv/cmake-tools.nvim",
