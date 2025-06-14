@@ -665,7 +665,7 @@ require("noice").setup({
 
 -- toggleterm
 require("toggleterm").setup({
-	open_mapping = [[<leader><c-\>]],
+	open_mapping = [[<c-\>]],
 	insert_mappings = false,
 	terminal_mappings = false,
 	direction = "horizontal",
