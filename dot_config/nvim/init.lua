@@ -668,20 +668,20 @@ require("toggleterm").setup({
 	open_mapping = [[<leader><c-\>]],
 	insert_mappings = false,
 	terminal_mappings = false,
-	direction = "float",
+	direction = "horizontal",
 	close_on_exit = false,
 })
 
 -- overseer
-local overseer_strat = {
-	"toggleterm",
-	use_shell = true,
-	direction = "float",
-	close_on_exit = false,
-	quit_on_exit = "never",
-}
 require("overseer").setup({
-	strategy = overseer_strat,
+	strategy = {
+		"toggleterm",
+		use_shell = true,
+		direction = "horizontal",
+		close_on_exit = false,
+		quit_on_exit = "success",
+		hidden = false,
+	},
 })
 
 -- cmake-tools
@@ -700,7 +700,14 @@ require("cmake-tools").setup({
 		name = "overseer",
 		opts = {
 			new_task_opts = {
-				strategy = overseer_strat,
+				strategy = {
+					"toggleterm",
+					use_shell = true,
+					direction = "horizontal",
+					close_on_exit = false,
+					quit_on_exit = "success",
+					hidden = false,
+				},
 			},
 			on_new_task = function(task) end,
 		},
@@ -709,9 +716,20 @@ require("cmake-tools").setup({
 		name = "overseer",
 		opts = {
 			new_task_opts = {
-				strategy = overseer_strat,
+				strategy = {
+					"toggleterm",
+					use_shell = true,
+					direction = "horizontal",
+					close_on_exit = false,
+					quit_on_exit = "never",
+					hidden = false,
+				},
 			},
 			on_new_task = function(task) end,
 		},
+	},
+	cmake_notifications = {
+		runner = { enabled = false },
+		executor = { enabled = false },
 	},
 })
