@@ -687,7 +687,7 @@ require("overseer").setup({
 -- cmake-tools
 require("cmake-tools").setup({
 	cmake_compile_commands_options = {
-		action = "lsp",
+		action = "none",
 	},
 	cmake_build_directory = function()
 		if require("cmake-tools.osys").iswin32 then
