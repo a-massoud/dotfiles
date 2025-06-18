@@ -36,7 +36,7 @@ require("lazy").setup({
 	"junegunn/vim-easy-align",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
-	"neovim/nvim-lspconfig",
+  "neovim/nvim-lspconfig",
 	"stevearc/conform.nvim",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
@@ -61,7 +61,6 @@ require("lazy").setup({
 	{ "rcarriga/nvim-notify", lazy = false, dependencies = { "MunifTanjim/nui.nvim", "folke/noice.nvim" } },
 	{ "folke/noice.nvim", lazy = false },
 	"stevearc/overseer.nvim",
-	"Civitasv/cmake-tools.nvim",
 	{ "mrcjkb/rustaceanvim", lazy = false },
 	"leoluz/nvim-dap-go",
 	"akinsho/toggleterm.nvim",
@@ -321,96 +320,83 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
--- lspconfig
+-- lsp
 vim.opt.signcolumn = "yes"
 -- Setup language servers.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({ capabilities = capabilities })
-lspconfig.ts_ls.setup({ capabilities = capabilities })
-lspconfig.jsonls.setup({ capabilities = capabilities })
-lspconfig.gopls.setup({ capabilities = capabilities })
--- lspconfig.rust_analyzer.setup({
--- 	settings = {
--- 		["rust-analyzer"] = {
--- 			imports = {
--- 				granularity = {
--- 					group = "module",
--- 				},
--- 			},
--- 		},
--- 	},
--- 	capabilities = capabilities,
--- })
-lspconfig.clangd.setup({
-	on_new_config = function(new_config, new_cwd)
-		local status, cmake = pcall(require, "cmake-tools")
-		if status then
-			cmake.clangd_on_new_config(new_config)
-		end
-	end,
+vim.lsp.config("pyright", { capabilities = capabilities })
+vim.lsp.enable("pyright")
+vim.lsp.config("ts_ls", { capabilities = capabilities })
+vim.lsp.enable("ts_ls")
+vim.lsp.config("jsonls", { capabilities = capabilities })
+vim.lsp.enable("jsonls")
+vim.lsp.config("gopls", { capabilities = capabilities })
+vim.lsp.enable("gopls")
+vim.lsp.config("clangd", {
 	cmd = { "clangd", "--background-index", "--header-insertion=never" },
 	capabilities = capabilities,
 })
+vim.lsp.enable("clangd")
 vim.api.nvim_set_keymap("n", "gh", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true })
-lspconfig.cmake.setup({ capabilities = capabilities })
-lspconfig.lua_ls.setup({
-	settings = {
-		Lua = {
+vim.lsp.config("cmake", { capabilities = capabilities })
+vim.lsp.enable("cmake")
+vim.lsp.config("lua_ls", {
+	on_init = function(client)
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+				path ~= vim.fn.stdpath("config")
+				and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+			then
+				return
+			end
+		end
+
+		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
+				path = {
+					"lua/?.lua",
+					"lua/?/init.lua",
+				},
 			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
+			-- Make the server aware of Neovim runtime files
 			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+				},
+				-- Or pull in all of 'runtimepath'.
+				-- library = {
+				--   vim.api.nvim_get_runtime_file('', true),
+				-- }
 			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
-		},
+		})
+	end,
+	settings = {
+		Lua = {},
 	},
 	capabilities = capabilities,
 })
-lspconfig.texlab.setup({ capabilities = capabilities })
-lspconfig.html.setup({ capabilities = capabilities })
-lspconfig.svelte.setup({ capabilities = capabilities })
-
--- -- spellcheck
--- lspconfig.ltex.setup({
--- 	settings = {
--- 		ltex = {
--- 			language = "en-US",
--- 			dictionary = {
--- 				["en-US"] = { "Massoud" },
--- 				es = { "Massoud" },
--- 				fr = { "Massoud" },
--- 			},
--- 			disabledRules = { fr = { "FRENCH_WHITESPACE" } },
--- 			["ltex-ls"] = {
--- 				logLevel = { "severe" },
--- 			},
--- 		},
--- 	},
--- 	on_attach = function(client, bufnr)
--- 		require("ltex_extra").setup({
--- 			load_langs = { "en-US", "es", "fr", "ar" },
--- 			path = vim.fn.expand("~") .. "/.local/share/ltex",
--- 		})
--- 	end,
--- 	capabilities = capabilities,
--- })
+vim.lsp.enable("lua_ls")
+vim.lsp.config("texlab", { capabilities = capabilities })
+vim.lsp.enable("texlab")
+vim.lsp.config("html", { capabilities = capabilities })
+vim.lsp.enable("html")
+vim.lsp.config("svelte", { capabilities = capabilities })
+vim.lsp.enable("svelte")
+vim.lsp.config("kotlin_lsp", { capabilities = capabilities })
+vim.lsp.enable("kotlin_lsp")
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
@@ -450,18 +436,6 @@ vim.api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { norem
 vim.api.nvim_set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<space>fs", "<cmd>Telescope lsp_workspace_symbols<cr>", { noremap = true })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- disable virtual text
-	virtual_text = true,
-
-	-- show signs
-	signs = true,
-
-	-- delay update diagnostics
-	update_in_insert = true,
-	-- display_diagnostic_autocmds = { "InsertLeave" },
-})
-
 -- conform (formatters)
 require("conform").setup({
 	formatters_by_ft = {
@@ -479,6 +453,7 @@ require("conform").setup({
 		html = { "djlint" },
 		toml = { "taplo" },
 		go = { "gofmt", lsp_format = "fallback" },
+    kotlin = { "ktfmt", lsp_format = "fallback" }
 	},
 })
 
@@ -681,55 +656,5 @@ require("overseer").setup({
 		close_on_exit = false,
 		quit_on_exit = "success",
 		hidden = false,
-	},
-})
-
--- cmake-tools
-require("cmake-tools").setup({
-	cmake_compile_commands_options = {
-		action = "none",
-	},
-	cmake_build_directory = function()
-		if require("cmake-tools.osys").iswin32 then
-			return "build\\${variant:buildType}"
-		end
-		return "build/${variant:buildType}"
-	end,
-	cmake_kits_path = "~/.cmake_kits.json",
-	cmake_executor = {
-		name = "overseer",
-		opts = {
-			new_task_opts = {
-				strategy = {
-					"toggleterm",
-					use_shell = true,
-					direction = "horizontal",
-					close_on_exit = false,
-					quit_on_exit = "success",
-					hidden = false,
-				},
-			},
-			on_new_task = function(task) end,
-		},
-	},
-	cmake_runner = {
-		name = "overseer",
-		opts = {
-			new_task_opts = {
-				strategy = {
-					"toggleterm",
-					use_shell = true,
-					direction = "horizontal",
-					close_on_exit = false,
-					quit_on_exit = "never",
-					hidden = false,
-				},
-			},
-			on_new_task = function(task) end,
-		},
-	},
-	cmake_notifications = {
-		runner = { enabled = false },
-		executor = { enabled = false },
 	},
 })
