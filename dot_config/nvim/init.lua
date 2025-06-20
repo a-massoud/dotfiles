@@ -341,7 +341,7 @@ vim.lsp.config("clangd", {
 	capabilities = capabilities,
 })
 vim.lsp.enable("clangd")
-vim.api.nvim_set_keymap("n", "gh", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "gh", "<cmd>LspClangdSwitchSourceHeader<CR>", { noremap = true })
 vim.lsp.config("cmake", { capabilities = capabilities })
 vim.lsp.enable("cmake")
 vim.lsp.config("lua_ls", {
@@ -460,6 +460,7 @@ require("conform").setup({
 		javascriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		typescript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		typescriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+    json = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		java = { lsp_format = "prefer" },
