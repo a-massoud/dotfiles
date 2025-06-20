@@ -36,7 +36,8 @@ require("lazy").setup({
 	"junegunn/vim-easy-align",
 	"vim-scripts/utl.vim",
 	"SirVer/ultisnips",
-  "neovim/nvim-lspconfig",
+	"mason-org/mason.nvim",
+	"neovim/nvim-lspconfig",
 	"stevearc/conform.nvim",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
@@ -322,6 +323,8 @@ cmp.setup.cmdline(":", {
 
 -- lsp
 vim.opt.signcolumn = "yes"
+-- Install language servers
+require("mason").setup()
 -- Setup language servers.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.lsp.config("pyright", { capabilities = capabilities })
@@ -383,10 +386,20 @@ vim.lsp.config("texlab", { capabilities = capabilities })
 vim.lsp.enable("texlab")
 vim.lsp.config("html", { capabilities = capabilities })
 vim.lsp.enable("html")
+vim.lsp.config("cssls", { capabilities = capabilities })
+vim.lsp.enable("cssls")
 vim.lsp.config("svelte", { capabilities = capabilities })
 vim.lsp.enable("svelte")
 vim.lsp.config("kotlin_lsp", { capabilities = capabilities })
 vim.lsp.enable("kotlin_lsp")
+vim.lsp.config("gradle_ls", { capabilities = capabilities })
+vim.lsp.enable("gradle_ls")
+
+-- Update command
+vim.api.nvim_create_user_command("Update", function()
+	vim.cmd("Lazy update")
+	vim.cmd("MasonUpdate")
+end, {})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -453,7 +466,7 @@ require("conform").setup({
 		html = { "djlint" },
 		toml = { "taplo" },
 		go = { "gofmt", lsp_format = "fallback" },
-    kotlin = { "ktfmt", lsp_format = "fallback" }
+		kotlin = { "ktfmt", lsp_format = "fallback" },
 	},
 })
 
