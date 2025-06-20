@@ -159,6 +159,7 @@ require("catppuccin").setup({
 		treesitter = true,
 		telescope = { enabled = true },
 		noice = true,
+		overseer = true,
 	},
 })
 vim.cmd("colorscheme catppuccin")
