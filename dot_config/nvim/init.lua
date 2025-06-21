@@ -406,10 +406,10 @@ end, {})
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.jump({ count = -1, on_jump = vim.diagnostic.open_float })
 end)
 vim.keymap.set("n", "]d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+	vim.diagnostic.jump({ count = 1, on_jump = vim.diagnostic.open_float })
 end)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
@@ -460,7 +460,7 @@ require("conform").setup({
 		javascriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		typescript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		typescriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
-    json = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+		json = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		java = { lsp_format = "prefer" },
