@@ -395,6 +395,13 @@ vim.lsp.config("kotlin_lsp", { capabilities = capabilities })
 vim.lsp.enable("kotlin_lsp")
 vim.lsp.config("gradle_ls", { capabilities = capabilities })
 vim.lsp.enable("gradle_ls")
+vim.lsp.config(
+	"groovyls",
+	{ cmd = { vim.fn.stdpath("data") .. "/mason/bin/groovy-language-server" }, capabilities = capabilities }
+)
+vim.lsp.enable("groovyls")
+vim.lsp.config("lemminx", { capabilities = capabilities })
+vim.lsp.enable("lemminx")
 
 -- Update command
 vim.api.nvim_create_user_command("Update", function()
@@ -469,8 +476,15 @@ require("conform").setup({
 		toml = { "taplo" },
 		go = { "gofmt", lsp_format = "fallback" },
 		kotlin = { "ktfmt", lsp_format = "fallback" },
+		xml = { "xmlformatter", lsp_format = "fallback" },
+		groovy = { lsp_format = "prefer" },
+		latex = { "latexindent", lsp_format = "fallback" },
+		tex = { "latexindent", lsp_format = "fallback" },
 	},
 })
+require("conform").formatters.latexindent = {
+	prepend_args = { "-y=\"defaultIndent:'  '\"" },
+}
 
 vim.keymap.set("n", "<space>fmt", function()
 	require("conform").format({ bufnr = 0 })
