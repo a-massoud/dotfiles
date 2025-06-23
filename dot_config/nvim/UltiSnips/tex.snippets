@@ -23,22 +23,11 @@ snippet template "Basic template" b
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 \usepackage{chemmacros}
-\usepackage{chemfig}
 \sisetup{retain-explicit-decimal-marker=true,per-mode=single-symbol}
-\renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
-\newcommand{\bondwidth}{0.06642em}
-\setchemfig{
-	atom sep=1.785em,
-	double bond sep=0.357em,
-	bond offset=0.18265em,
-	bond style={line width=\bondwidth}
-}
 
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
 
 \usepackage[autostyle,autopunct]{csquotes}
 
