@@ -35,6 +35,10 @@ alias ls='ls --color=auto -F'
 # emacs-nox
 alias emacs="emacs -nw"
 
+# cmake defaults
+export CMAKE_GENERATOR="Ninja Multi-Config"
+export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
+
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 
@@ -58,8 +62,12 @@ fi
 
 [[ -s "$HOME/.emacs.d/bin" ]] && export PATH="$PATH:$HOME/.emacs.d/bin"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+if [[ -d "$HOME/.pyenv/bin" ]]
+then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init - zsh)"
+fi
+
+[[ -s "$HOME/.local/share/JetBrains/Toolbos/scripts" ]] && export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 true
