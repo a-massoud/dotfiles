@@ -570,9 +570,6 @@ end)
 -- vimtex
 vim.g.latex_view_general_viewer = "zathura"
 vim.g.vimtex_view_method = "zathura"
-vim.g.vimtex_compiler_latexmk = {
-	out_dir = "./out",
-}
 vim.g.vimtex_indent_on_ampersands = 0
 vim.api.nvim_set_keymap("i", "<C-|>", "<plug>(vimtex-delim-close)", { noremap = true }) -- set this to something I can't type, essentially just remove it
 
