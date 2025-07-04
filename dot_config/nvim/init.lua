@@ -402,6 +402,9 @@ vim.lsp.config(
 vim.lsp.enable("groovyls")
 vim.lsp.config("lemminx", { capabilities = capabilities })
 vim.lsp.enable("lemminx")
+vim.lsp.config("splint_lsp", { capabilities = capabilities })
+vim.lsp.enable("slint_lsp")
+vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]) -- add slint filetype
 
 -- Update command
 vim.api.nvim_create_user_command("Update", function()
@@ -480,6 +483,7 @@ require("conform").setup({
 		groovy = { lsp_format = "prefer" },
 		latex = { "latexindent", lsp_format = "fallback" },
 		tex = { "latexindent", lsp_format = "fallback" },
+		slint = { lsp_format = "prefer" },
 	},
 })
 require("conform").formatters.latexindent = {
