@@ -119,7 +119,7 @@ vim.opt.relativenumber = false
 
 -- syntax
 vim.opt.cursorline = true
-vim.opt.bg = "light"
+-- vim.opt.bg = "dark"
 vim.env["NVIM_TUI_ENABLE_TRUE_COLOR"] = "1"
 if vim.fn.has("termguicolors") then
 	vim.opt.termguicolors = true
