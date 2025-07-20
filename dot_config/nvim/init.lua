@@ -405,6 +405,8 @@ vim.lsp.enable("lemminx")
 vim.lsp.config("splint_lsp", { capabilities = capabilities })
 vim.lsp.enable("slint_lsp")
 vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]) -- add slint filetype
+vim.lsp.config("hls", { filetypes = { "haskell", "lhaskell", "cabal" }, capabilities = capabilities })
+vim.lsp.enable("hls")
 
 -- Update command
 vim.api.nvim_create_user_command("Update", function()

@@ -62,6 +62,8 @@ fi
 
 [[ -s "$HOME/.emacs.d/bin" ]] && export PATH="$PATH:$HOME/.emacs.d/bin"
 
+[[ -s "$HOME/.ghcup/bin" ]] && export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
 if [[ -d "$HOME/.pyenv/bin" ]]
 then
   export PATH="$HOME/.pyenv/bin:$PATH"
