@@ -73,3 +73,7 @@ fi
 [[ -s "$HOME/.local/share/JetBrains/Toolbos/scripts" ]] && export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 true
+
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]] && [[ $USER != root ]]; then
+  exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+fi
