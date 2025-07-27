@@ -36,7 +36,7 @@ alias ls='ls --color=auto -F'
 alias emacs="emacs -nw"
 
 # cmake defaults
-export CMAKE_GENERATOR="Ninja Multi-Config"
+export CMAKE_GENERATOR="Ninja"
 export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
