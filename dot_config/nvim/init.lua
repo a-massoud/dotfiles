@@ -66,6 +66,7 @@ require("lazy").setup({
 	"leoluz/nvim-dap-go",
 	"akinsho/toggleterm.nvim",
 	"mfussenegger/nvim-dap-python",
+	"Civitasv/cmake-tools.nvim",
 })
 
 -- comentary: use single-line comments for c/c++
@@ -688,5 +689,41 @@ require("overseer").setup({
 		close_on_exit = false,
 		quit_on_exit = "success",
 		hidden = false,
+	},
+})
+
+-- cmake-tools
+require("cmake-tools").setup({
+	cmake_build_directory = "build",
+  cmake_compile_commands_options = {
+    action = "lsp"
+  },
+	cmake_executor = {
+		name = "overseer",
+		opts = {
+			new_task_opts = {
+				strategy = {
+					"toggleterm",
+					direction = "horizontal",
+					auto_scroll = true,
+					quit_on_exit = "success",
+				},
+			}, -- options to pass into the `overseer.new_task` command
+			on_new_task = function(_) end,
+		},
+	},
+	cmake_runner = {
+		name = "overseer",
+		opts = {
+			new_task_opts = {
+				strategy = {
+					"toggleterm",
+					direction = "horizontal",
+					auto_scroll = true,
+					quit_on_exit = "success",
+				},
+			}, -- options to pass into the `overseer.new_task` command
+			on_new_task = function(_) end,
+		},
 	},
 })
