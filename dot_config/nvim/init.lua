@@ -522,6 +522,10 @@ dap.adapters.codelldb = {
 dap.adapters.cpp = dap.adapters.codelldb
 dap.adapters.c = dap.adapters.codelldb
 dap.adapters.rust = dap.adapters.codelldb
+dap.adapters.kotlin = {
+	type = "executable",
+	command = "kotlin-debug-adapter",
+}
 require("dap-go").setup()
 require("dap-python").setup("python3")
 dap.configurations.cpp = {
@@ -540,6 +544,17 @@ dap.configurations.cpp = {
 }
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
+dap.configurations.kotlin = {
+	{
+		name = "Launch Kotlin Debug Adapter",
+		type = "kotlin",
+		request = "launch",
+		mainClass = function()
+			return vim.fn.input("Main class: ")
+		end,
+		projectRoot = vim.fn.getcwd(),
+	},
+}
 
 dapui.setup()
 dap.listeners.before.attach.dapui_config = function()
