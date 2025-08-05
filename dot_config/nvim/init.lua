@@ -57,7 +57,6 @@ require("lazy").setup({
 	-- "barreiroleo/ltex_extra.nvim",
 	{ "R-nvim/R.nvim", lazy = false },
 	"R-nvim/cmp-r",
-	"hkupty/iron.nvim",
 	"stevearc/dressing.nvim",
 	{ "rcarriga/nvim-notify", lazy = false, dependencies = { "MunifTanjim/nui.nvim", "folke/noice.nvim" } },
 	{ "folke/noice.nvim", lazy = false },
@@ -67,6 +66,7 @@ require("lazy").setup({
 	"akinsho/toggleterm.nvim",
 	"mfussenegger/nvim-dap-python",
 	"Civitasv/cmake-tools.nvim",
+	{ "benlubas/molten-nvim", version = "^1.0.0", build = ":UpdateRemotePlugins" },
 })
 
 -- comentary: use single-line comments for c/c++
@@ -587,58 +587,33 @@ vim.api.nvim_set_keymap("i", "<C-|>", "<plug>(vimtex-delim-close)", { noremap = 
 -- R
 require("cmp_r").setup({})
 
--- iron.nvim
-require("iron.core").setup({
-	config = {
-		-- Whether a repl should be discarded or not
-		scratch_repl = true,
-		-- Your repl definitions come here
-		repl_definition = {
-			sh = {
-				-- Can be a table or a function that
-				-- returns a table (see below)
-				command = { "zsh" },
-			},
-			python = {
-				command = { "ipython", "--no-autoindent" },
-				format = require("iron.fts.common").bracketed_paste_python,
-			},
-		},
-		-- How the repl window will be displayed
-		-- See below for more information
-		repl_open_cmd = require("iron.view").split.vertical.botright("40%"),
-	},
-	-- Iron doesn't set keymaps by default anymore.
-	-- You can set them here or manually add keymaps to the functions in iron.core
-	keymaps = {
-		send_motion = "<space>sc",
-		visual_send = "<space>sc",
-		send_file = "<space>sf",
-		send_line = "<space>sl",
-		send_paragraph = "<space>sp",
-		send_until_cursor = "<space>su",
-		send_mark = "<space>sm",
-		mark_motion = "<space>mc",
-		mark_visual = "<space>mc",
-		remove_mark = "<space>md",
-		cr = "<space>s<cr>",
-		interrupt = "<space>s<space>",
-		exit = "<space>sq",
-		clear = "<space>cl",
-	},
-	-- If the highlight is on, you can change how it looks
-	-- For the available options, check nvim_set_hl
-	highlight = {
-		italic = true,
-	},
-	ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
-})
-
--- iron also has a list of commands, see :h iron-commands for all available commands
-vim.keymap.set("n", "<space>rs", "<cmd>IronRepl<cr>")
-vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>")
-vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>")
-vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
+-- molten
+vim.g.molten_auto_image_popup = true
+vim.g.molten_auto_open_html_in_browser = true
+require("molten.status").kernels()
+vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
+vim.keymap.set(
+	"n",
+	"<localleader>me",
+	":MoltenEvaluateOperator<CR>",
+	{ silent = true, desc = "run operator selection" }
+)
+vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
+vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
+vim.keymap.set(
+	"v",
+	"<localleader>r",
+	":<C-u>MoltenEvaluateVisual<CR>gv",
+	{ silent = true, desc = "evaluate visual selection" }
+)
+vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
+vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
+vim.keymap.set(
+	"n",
+	"<localleader>os",
+	":noautocmd MoltenEnterOutput<CR>",
+	{ silent = true, desc = "show/enter output" }
+)
 
 -- notify & noice
 vim.notify = require("notify")
