@@ -26,11 +26,11 @@ require("lazy").setup({
   -- "tpope/vim-fugitive",
   "farmergreg/vim-lastplace",
   "nvim-lualine/lualine.nvim",
-  "nvim-lua/plenary.nvim",
-  "nvim-tree/nvim-web-devicons",
-  { "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+  -- "nvim-lua/plenary.nvim",
+  -- "nvim-tree/nvim-web-devicons",
+  -- { "nvim-telescope/telescope.nvim", branch = "0.1.x" },
   -- { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  "nvim-telescope/telescope-file-browser.nvim",
+  -- "nvim-telescope/telescope-file-browser.nvim",
   { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
   -- "dhruvasagar/vim-table-mode",
   "junegunn/vim-easy-align",
@@ -38,13 +38,13 @@ require("lazy").setup({
   "SirVer/ultisnips",
   -- "mason-org/mason.nvim",
   -- "neovim/nvim-lspconfig",
-  "stevearc/conform.nvim",
+  -- "stevearc/conform.nvim",
   -- "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/nvim-cmp",
-  "quangnguyen30192/cmp-nvim-ultisnips",
+  -- "hrsh7th/cmp-buffer",
+  -- "hrsh7th/cmp-path",
+  -- "hrsh7th/cmp-cmdline",
+  -- "hrsh7th/nvim-cmp",
+  -- "quangnguyen30192/cmp-nvim-ultisnips",
   -- "mfussenegger/nvim-dap",
   -- "nvim-neotest/nvim-nio",
   -- "rcarriga/nvim-dap-ui",
@@ -119,7 +119,7 @@ vim.opt.relativenumber = false
 
 -- syntax
 vim.opt.cursorline = true
--- vim.opt.bg = "dark"
+-- vim.opt.bg = "light"
 vim.env["NVIM_TUI_ENABLE_TRUE_COLOR"] = "1"
 if vim.fn.has("termguicolors") then
   vim.opt.termguicolors = true
@@ -213,33 +213,33 @@ lualine.setup({
 -- })
 
 -- telescope
-local fb_actions = require("telescope").extensions.file_browser.actions
-require("telescope").setup({
-  extensions = {
-    file_browser = {
-      respect_gitignore = false,
-      hijack_netrw = true,
-      mappings = {
-        ["i"] = {
-          ["<A-CR>"] = fb_actions.create_from_prompt,
-        },
-      },
-    },
-  },
-})
-require("telescope").load_extension("file_browser")
+-- local fb_actions = require("telescope").extensions.file_browser.actions
+-- require("telescope").setup({
+--   extensions = {
+--     file_browser = {
+--       respect_gitignore = false,
+--       hijack_netrw = true,
+--       mappings = {
+--         ["i"] = {
+--           ["<A-CR>"] = fb_actions.create_from_prompt,
+--         },
+--       },
+--     },
+--   },
+-- })
+-- require("telescope").load_extension("file_browser")
 
-vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep hidden=true<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope file_browser<cr>", { noremap = true })
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>fc",
-  "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>",
-  { noremap = true }
-)
+-- vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep hidden=true<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope file_browser<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<leader>fc",
+--   "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>",
+--   { noremap = true }
+-- )
 
 -- F2 to toggle search highlighting
 vim.api.nvim_set_keymap("", "<F2>", "<cmd>nohl<CR>", { noremap = true })
@@ -263,64 +263,64 @@ vim.g.UltiSnipsJumpForwardTrigger = "<c-w>"
 vim.g.UltiSnipsJumpBackwardTrigger = "<c-q>"
 
 -- nvim-cmp.
-local cmp = require("cmp")
+-- local cmp = require("cmp")
 
 -- local t = function(str)
 --  return vim.api.nvim_replace_termcodes(str, true, true, true)
 -- end
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "ultisnips" }, -- For ultisnips users.
-    { name = "cmp_r" },
-  }, {
-    { name = "buffer" },
-  }),
-})
+-- cmp.setup({
+--   snippet = {
+--     expand = function(args)
+--       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+--     end,
+--   },
+--   window = {
+--     -- completion = cmp.config.window.bordered(),
+--     -- documentation = cmp.config.window.bordered(),
+--   },
+--   mapping = cmp.mapping.preset.insert({
+--     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+--     ["<C-f>"] = cmp.mapping.scroll_docs(4),
+--     ["<C-Space>"] = cmp.mapping.complete(),
+--     ["<C-e>"] = cmp.mapping.abort(),
+--     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+--   }),
+--   sources = cmp.config.sources({
+--     { name = "nvim_lsp" },
+--     { name = "ultisnips" }, -- For ultisnips users.
+--     { name = "cmp_r" },
+--   }, {
+--     { name = "buffer" },
+--   }),
+-- })
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype("gitcommit", {
-  sources = cmp.config.sources({
-    { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-  }, {
-    { name = "buffer" },
-  }),
-})
+-- cmp.setup.filetype("gitcommit", {
+--   sources = cmp.config.sources({
+--     { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+--   }, {
+--     { name = "buffer" },
+--   }),
+-- })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "buffer" },
-  },
-})
+-- cmp.setup.cmdline({ "/", "?" }, {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = {
+--     { name = "buffer" },
+--   },
+-- })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = "path" },
-  }, {
-    { name = "cmdline" },
-  }),
-})
+-- cmp.setup.cmdline(":", {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = cmp.config.sources({
+--     { name = "path" },
+--   }, {
+--     { name = "cmdline" },
+--   }),
+-- })
 
 -- lsp
 -- vim.opt.signcolumn = "yes"
@@ -467,8 +467,8 @@ cmp.setup.cmdline(":", {
 -- vim.api.nvim_set_keymap("n", "<space>fs", "<cmd>Telescope lsp_workspace_symbols<cr>", { noremap = true })
 
 -- conform (formatters)
-require("conform").setup({
-  formatters_by_ft = {
+-- require("conform").setup({
+  -- formatters_by_ft = {
     -- lua = { "stylua" },
     -- python = { "isort", "black" },
     -- rust = { "rustfmt", lsp_format = "fallback" },
@@ -487,18 +487,18 @@ require("conform").setup({
     -- kotlin = { "ktfmt", lsp_format = "fallback" },
     -- xml = { "xmlformatter", lsp_format = "fallback" },
     -- groovy = { lsp_format = "prefer" },
-    latex = { "latexindent", lsp_format = "fallback" },
-    tex = { "latexindent", lsp_format = "fallback" },
+    -- latex = { "latexindent", lsp_format = "fallback" },
+    -- tex = { "latexindent", lsp_format = "fallback" },
     -- slint = { lsp_format = "prefer" },
-  },
-})
-require("conform").formatters.latexindent = {
-  prepend_args = { "-y=\"defaultIndent:'  '\"" },
-}
+  -- },
+-- })
+-- require("conform").formatters.latexindent = {
+  -- prepend_args = { "-y=\"defaultIndent:'  '\"" },
+-- }
 
-vim.keymap.set("n", "<space>fmt", function()
-  require("conform").format({ bufnr = 0 })
-end)
+-- vim.keymap.set("n", "<space>fmt", function()
+  -- require("conform").format({ bufnr = 0 })
+-- end)
 
 -- python venvs
 -- if vim.fn.exists("$VIRTUAL_ENV") == 1 then
