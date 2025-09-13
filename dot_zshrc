@@ -74,6 +74,6 @@ fi
 
 true
 
-if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]] && [[ $USER != root ]]; then
+if [[ -z $DISPLAY ]] && [[ $TTY == /dev/tty1 ]] && [[ $USER != root ]]; then
   exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 fi
