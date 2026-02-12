@@ -22,4 +22,22 @@ return {
       }
     end,
   },
+  {
+    "mason-org/mason.nvim",
+    opts = { ensure_installed = { "texlab" } },
+  },
+  {
+    "stevearc/conform.nvim",
+    --@type require("conform").setupOpts
+    opts = {
+      formatters_by_ft = {
+        tex = { "latexindent" },
+      },
+      formatters = {
+        latexindent = {
+          prepend_args = { "-rv", "-y\"defaultIndent:'  '\"", "-m" },
+        },
+      },
+    },
+  },
 }
