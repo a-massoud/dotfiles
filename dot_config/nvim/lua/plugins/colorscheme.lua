@@ -1,4 +1,3 @@
 return {
-  "shaunsingh/solarized.nvim",
-  {"LazyVim/LazyVim", opts = { colorscheme = "solarized" }}
+  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } },
 }
