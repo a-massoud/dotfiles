@@ -35,10 +35,6 @@ alias ls='ls --color=auto -F'
 # emacs-nox
 alias emacs="emacs -nw"
 
-# cmake defaults
-export CMAKE_GENERATOR="Ninja"
-export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
-
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 

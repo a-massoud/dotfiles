@@ -6,6 +6,7 @@ export BROWSER=/usr/bin/firefox
 export TERMINAL=/usr/bin/kitty
 export MOZ_ENABLE_WAYLAND=1
 export MAKEFLAGS=-j$(($(grep -c "^processor" /proc/cpuinfo)))
+export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 if [[ $PATH != *"$HOME/.local/bin"* ]]
 then
     export PATH=$HOME/.local/bin:$PATH
