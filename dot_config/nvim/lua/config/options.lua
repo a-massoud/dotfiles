@@ -3,5 +3,3 @@
 -- Add any additional options here
 
 vim.g.autoformat = false
-
-vim.g.bg = "light"
