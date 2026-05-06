@@ -20,7 +20,7 @@ return {
               env = { PYTHON_BASIC_REPL = "1" }, --this is needed for python3.13 and up.
             },
           },
-          repl_open_cmd = view.bottom(30),
+          repl_open_cmd = view.split.horizontal.below(30),
         },
         keymaps = {
           send_motion = "<space>msc",
@@ -47,6 +47,34 @@ return {
       vim.keymap.set("n", "<space>mrr", "<cmd>IronRestart<cr>")
       vim.keymap.set("n", "<space>mrf", "<cmd>IronFocus<cr>")
       vim.keymap.set("n", "<space>mrh", "<cmd>IronHide<cr>")
+    end,
+  },
+  {
+    "GCBallesteros/NotebookNavigator.nvim",
+    keys = {
+      {
+        "]h",
+        function()
+          require("notebook-navigator").move_cell("d")
+        end,
+      },
+      {
+        "[h",
+        function()
+          require("notebook-navigator").move_cell("u")
+        end,
+      },
+      { "<leader>X", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
+      { "<leader>x", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+    },
+    dependencies = {
+      "nvim-mini/mini.comment",
+      "hkupty/iron.nvim", -- repl provider
+    },
+    event = "VeryLazy",
+    config = function()
+      local nn = require("notebook-navigator")
+      nn.setup()
     end,
   },
 }
